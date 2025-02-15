@@ -16,13 +16,13 @@ theme = "ananke"
 
 [params]
   assetsDir = "static"  # Ensure Hugo knows where static files are
-  site_logo = "/images/fragda-logo.png"  # Uncomment if needed
+#  site_logo = "/images/fragda-logo.png"
 
 [outputs]
   home = ["HTML", "RSS"]
   section = ["HTML"]
   taxonomy = ["HTML"]
-  
+
 ####################################
 # Navigation Menu
 ####################################
