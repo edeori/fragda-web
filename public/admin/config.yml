@@ -1,0 +1,72 @@
+backend:
+  name: git-gateway
+  branch: main
+
+#local_backend: true  # Enables local testing without Netlify
+
+media_folder: "static/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "posts"
+    label: "News"
+    folder: "content/posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Featured Image", name: "image", widget: "image", choose_url: true, required: false }
+      - { label: "YouTube Embed URL", name: "youtube", widget: "string", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "bio"
+    label: "Bio Page"
+    file: "content/bio.md"  # ✅ Directly targets bio.md
+    create: false  # Only one page, no new entries
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "releases"
+    label: "Releases"
+    folder: "content/releases"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Year", name: "year", widget: "number" }
+      - { label: "Album Cover", name: "image", widget: "image", choose_url: true }
+      - { label: "Spotify Album Link", name: "spotify", widget: "string", required: false } # Global album link
+      - label: "Songs"
+        name: "songs"
+        widget: "list"
+        fields:
+          - { label: "Song Title", name: "title", widget: "string" }
+          - { label: "Spotify Link", name: "spotify", widget: "string", required: false }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+
+  - name: "concerts"
+    label: "Concerts"
+    folder: "content/concerts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Location", name: "location", widget: "string" }
+      - { label: "Ticket Link", name: "ticket_link", widget: "string", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "shop"
+    label: "Shop"
+    folder: "content/shop"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Product Name", name: "title", widget: "string" }
+      - { label: "Price", name: "price", widget: "string" }
+      - { label: "Product Image", name: "image", widget: "image", choose_url: true }
+      - { label: "Buy Link", name: "buy_link", widget: "string" }
+      - { label: "Description", name: "body", widget: "markdown" }
