@@ -1,0 +1,18 @@
+{{ define "main" }}
+<div class="news-container">
+    <h1 class="news-title">Latest News</h1>
+    {{ range (where .Site.RegularPages "Section" "posts") }}
+    <article class="news-post">
+        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        <p class="news-meta">{{ .Date.Format "January 2, 2006" }}</p>
+        {{ with .Params.image }}
+        <img src="{{ . }}" alt="{{ $.Title }}" class="news-image">
+        {{ end }}
+        <div class="news-content">
+            {{ .Summary }}
+        </div>
+        <a href="{{ .RelPermalink }}" class="read-more">Read more...</a>
+    </article>
+    {{ end }}
+</div>
+{{ end }}

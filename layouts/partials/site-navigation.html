@@ -1,0 +1,44 @@
+<nav class="sticky-header pv3 ph3 ph4-ns" role="navigation">
+  <div class="nav-container">
+    <!-- Logo (Always Left) -->
+    <a href="{{ .Site.Home.RelPermalink }}" class="logo-container">
+      {{ with .Site.Params.site_logo }}
+      <img src="{{ relURL . }}" class="logo" alt="{{ $.Site.Title }}" />
+      {{ else }}
+      <span class="site-title">{{ .Site.Title }}</span>
+      {{ end }}
+    </a>
+
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-button" onclick="toggleMobileMenu()">
+      ☰
+    </button>
+
+    <!-- Desktop Menu -->
+    <div class="desktop-menu">
+      {{ if .Site.Menus.main }}
+      <ul>
+        {{ range .Site.Menus.main }}
+        <li>
+          <a href="{{ .URL }}">{{ .Name }}</a>
+        </li>
+        {{ end }}
+      </ul>
+      {{ end }}
+      {{ partialCached "social/follow.html" . }}
+    </div>
+  </div>
+
+  <!-- Mobile Menu (Hidden by Default) -->
+  <div id="mobile-menu" class="mobile-menu hidden">
+    {{ if .Site.Menus.main }}
+    <ul>
+      {{ range .Site.Menus.main }}
+      <li>
+        <a href="{{ .URL }}">{{ .Name }}</a>
+      </li>
+      {{ end }}
+    </ul>
+    {{ end }}
+  </div>
+</nav>

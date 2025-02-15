@@ -1,0 +1,27 @@
+{{ define "main" }}
+<article class="release-details">
+  <h1>{{ .Title }}</h1>
+  <p class="release-year">{{ .Params.year }}</p>
+
+  <img src="{{ .Params.image }}" alt="{{ .Title }}" class="release-cover-large">
+
+  {{ if .Params.spotify }}
+  <div class="spotify-link">
+    <a href="{{ .Params.spotify }}" target="_blank">
+      <img src="/images/spotify-icon.png" alt="Listen on Spotify" class="spotify-icon">
+    </a>
+  </div>
+  {{ end }}
+
+  <h2>Tracklist</h2>
+  <ul class="tracklist">
+    {{ range .Params.songs }}
+    <li>{{ .title }}</li>
+    {{ end }}
+  </ul>
+
+  <div class="release-description">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

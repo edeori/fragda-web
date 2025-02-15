@@ -1,0 +1,49 @@
+####################################
+# Hugo Site Configuration
+####################################
+
+baseURL = "https://example.org/"
+languageCode = "en-us"
+title = "Fragda Official"
+theme = "ananke"
+
+####################################
+# Site Parameters (Uncomment if needed)
+####################################
+
+# [params]
+#   site_logo = "/images/fragda-logo.png"
+
+####################################
+# Navigation Menu
+####################################
+
+[[menu.main]]
+  identifier = "releases"
+  name = "Releases"
+  url = "/releases/"
+  weight = 1
+
+[[menu.main]]
+  identifier = "bio"
+  name = "Bio"
+  url = "/bio/"
+  weight = 2
+
+[[menu.main]]
+  identifier = "concerts"
+  name = "Concerts"
+  url = "/concerts/"
+  weight = 3
+
+[[menu.main]]
+  identifier = "shop"
+  name = "Shop"
+  url = "/shop/"
+  weight = 4
+
+[[menu.main]]
+  identifier = "contact"
+  name = "Contact"
+  url = "/contact/"
+  weight = 5

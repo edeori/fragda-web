@@ -1,0 +1,15 @@
+{{ define "main" }}
+  <article class="concert-post">
+    <h1>{{ .Title }}</h1>
+    <p class="concert-date">{{ .Date.Format "January 2, 2006" }}</p>
+    <p class="concert-location">{{ .Params.location }}</p>
+
+    {{ with .Params.ticket_link }}
+      <p><a href="{{ . }}" target="_blank">Get Tickets</a></p>
+    {{ end }}
+
+    <div class="concert-content">
+      {{ .Content }}
+    </div>
+  </article>
+{{ end }}

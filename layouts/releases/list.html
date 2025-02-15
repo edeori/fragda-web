@@ -1,0 +1,13 @@
+{{ define "main" }}
+  <div class="releases-grid">
+    {{ range .Pages }}
+      <div class="release-item">
+        <a href="{{ .Permalink }}">
+          <img src="{{ .Params.image }}" alt="{{ .Title }}" class="release-cover">
+        </a>
+        <h3>{{ .Title }}</h3>
+        <p>{{ .Params.year }}</p>
+      </div>
+    {{ end }}
+  </div>
+{{ end }}

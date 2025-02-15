@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fragda Official</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Fragda Official</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 15 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>dddddd</title>
+      <link>http://localhost:1313/posts/dddddd/</link>
+      <pubDate>Sat, 15 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/dddddd/</guid>
+      <description>&lt;p&gt;d﻿ddddd&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Contact</title>
+      <link>http://localhost:1313/contact/</link>
+      <pubDate>Fri, 14 Feb 2025 22:28:09 +0100</pubDate>
+      <guid>http://localhost:1313/contact/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>asdf</title>
+      <link>http://localhost:1313/posts/asdf/</link>
+      <pubDate>Fri, 14 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/asdf/</guid>
+      <description>&lt;p&gt;a﻿sdf&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>elso</title>
+      <link>http://localhost:1313/releases/elso/</link>
+      <pubDate>Fri, 14 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/releases/elso/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ffff</title>
+      <link>http://localhost:1313/posts/ffff/</link>
+      <pubDate>Fri, 14 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/ffff/</guid>
+      <description>&lt;p&gt;e﻿feef&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>picture test</title>
+      <link>http://localhost:1313/posts/picture-test/</link>
+      <pubDate>Fri, 14 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/picture-test/</guid>
+      <description>&lt;p&gt;t﻿ext&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>masodik</title>
+      <link>http://localhost:1313/releases/masodik/</link>
+      <pubDate>Thu, 13 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/releases/masodik/</guid>
+      <description>&lt;p&gt;d﻿fjh&lt;/p&gt;&#xA;&lt;p&gt;f﻿gjh&lt;/p&gt;&#xA;&lt;p&gt;f﻿gjh&lt;/p&gt;&#xA;&lt;p&gt;f﻿gjh&lt;/p&gt;&#xA;&lt;p&gt;f﻿gjh&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>About Fragda</title>
+      <link>http://localhost:1313/bio/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/bio/</guid>
+      <description>&lt;h2 id=&#34;welcome-to-fragda-official-bio&#34;&gt;Welcome to Fragda Official Bio!&lt;/h2&gt;&#xA;&lt;p&gt;This is where you can add text about &lt;strong&gt;Fragda&lt;/strong&gt;, formatted with Markdown.&lt;/p&gt;&#xA;&lt;h3 id=&#34;-band-history&#34;&gt;🎸 Band History&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Started in &lt;strong&gt;Year X&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;Released albums such as &lt;em&gt;Album Name 1&lt;/em&gt;, &lt;em&gt;Album Name 2&lt;/em&gt;&lt;/li&gt;&#xA;&lt;li&gt;Known for &lt;strong&gt;awesome live performances&lt;/strong&gt; 🎤🔥&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;-image-section&#34;&gt;📸 Image Section&lt;/h3&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/uploads/29000026.jpg&#34; alt=&#34;Bio Image&#34;&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
