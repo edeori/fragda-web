@@ -1,8 +1,8 @@
 backend:
   name: git-gateway
-  branch: main # Or "master" if your repo uses it
+  branch: main
 
-local_backend: true  # Enables local testing without Netlify
+#local_backend: true  # Enables local testing without Netlify
 
 media_folder: "static/images/uploads"
 public_folder: "/images/uploads"
