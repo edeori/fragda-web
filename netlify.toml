@@ -6,6 +6,7 @@
   HUGO_VERSION = "0.143.1"
   HUGO_ENV = "production"
   HUGO_ENABLEGITINFO = "true"
+  HUGO_BUILD_DRAFTS = "true"
 
 [build.processing]
   skip_processing = false

@@ -16,6 +16,7 @@ theme = "ananke"
 
 [params]
   assetsDir = "static"  # Ensure Hugo knows where static files are
+  defaultLayout = "layouts"
 #  site_logo = "/images/fragda-logo.png"
 
 [outputs]
