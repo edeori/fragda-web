@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   branch: main
 
-#local_backend: true  # Enables local testing without Netlify
+local_backend: true  # Enables local testing without Netlify
 
 media_folder: "static/images/uploads"
 public_folder: "/images/uploads"
@@ -22,12 +22,14 @@ collections:
 
   - name: "bio"
     label: "Bio Page"
-    file: "content/bio.md"  # ✅ Directly targets bio.md
-    create: false  # Only one page, no new entries
-    format: "frontmatter"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
+    delete: false # Prevent deletion
+    files:
+      - label: "Bio"
+        name: "bio"
+        file: "content/bio.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
 
   - name: "releases"
     label: "Releases"
