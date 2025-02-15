@@ -1,0 +1,26 @@
+# Hugo-generated files
+/public
+/resources
+hugo_stats.json
+
+# Netlify & Build Cache
+.netlify/
+.cache/
+hugo_build.lock
+
+# Hugo Modules
+/go.mod
+/go.sum
+
+# Temporary files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.swn
+
+# Logs & system files
+*.log
+node_modules/
+npm-debug.log
+package-lock.json
