@@ -1,5 +1,5 @@
 [build]
-  command = "echo 'Skipping Hugo build; using prebuilt public folder'"
+  command = "hugo --gc --minify"
   publish = "public"
 
 [context.production.environment]
@@ -11,3 +11,10 @@
 [build.processing]
   skip_processing = false
   ignore = false  # Ensures all files are included
+
+[[redirects]]
+  from = "/"
+  to = "/admin/"
+  status = 302
+  force = true
+  query = { invite_token = ":invite_token" }
