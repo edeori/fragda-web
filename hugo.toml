@@ -2,7 +2,7 @@
 # Hugo Site Configuration
 ####################################
 
-baseURL = "https://example.org/"
+baseURL = "https://fragda.hu/"
 languageCode = "en-us"
 title = "Fragda Official"
 theme = "ananke"
@@ -14,6 +14,15 @@ theme = "ananke"
 # [params]
 #   site_logo = "/images/fragda-logo.png"
 
+[params]
+  assetsDir = "static"  # Ensure Hugo knows where static files are
+  site_logo = "/images/fragda-logo.png"  # Uncomment if needed
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML"]
+  taxonomy = ["HTML"]
+  
 ####################################
 # Navigation Menu
 ####################################
