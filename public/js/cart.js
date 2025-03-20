@@ -83,21 +83,6 @@ function removeFromCart(index, event) {
   loadCartSidebar(); // Refresh cart display
 }
 
-function loadCartSidebar() {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  let cartList = document.getElementById("cart-items");
-  if (!cartList) return;
-  cartList.innerHTML = "";
-
-  cart.forEach((item, index) => {
-    let li = document.createElement("li");
-    li.innerHTML = `<img src="${item.image}" class="cart-item-image" alt="${item.title}">
-                        <span class="cart-item-text">${item.title} - ${item.price} ${item.currency}</span>
-                        <button class="cart-delete" onclick="removeFromCart(${index}, event)">✖</button>`; // Pass event
-    cartList.appendChild(li);
-  });
-}
-
 function toggleCart() {
   document.getElementById("cart-sidebar").classList.toggle("open");
 }

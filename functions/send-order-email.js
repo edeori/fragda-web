@@ -2,8 +2,6 @@ const nodemailer = require("nodemailer");
 
 exports.handler = async function (event) {
   try {
-    console.log("All ENV Variables:", process.env); 
-
     const order = JSON.parse(event.body);
 
     let transporter = nodemailer.createTransport({
