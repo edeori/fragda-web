@@ -1,0 +1,35 @@
+{{ define "main" }}
+<section class="concerts-list">
+
+    {{ $concerts := where .Site.RegularPages "Section" "concerts" }}
+    {{ $sortedConcerts := sort $concerts "Params.datetime" "desc" }}
+
+    <div class="concert-container">
+        {{ range $sortedConcerts }}
+        {{ $datetimeStr := print .Params.datetime ":00" }} {{/* Ensures seconds exist */}}
+        {{ $eventDate := $datetimeStr | time.AsTime }}
+        {{ $isUpcoming := gt $eventDate now }}
+
+        <div class="concert-item {{ if $isUpcoming }}upcoming{{ else }}past{{ end }}">
+            <div class="concert-details">
+                <span class="concert-date">📅 {{ $eventDate.Format "January 2, 2006 - 15:04" }}</span>
+                <span class="concert-name"><strong>{{ .Title }}</strong></span>
+                <span class="concert-location">📍 {{ .Params.location }}</span>
+                <span class="concert-status">
+                    {{ if $isUpcoming }} 🟢 <strong>Upcoming</strong>
+                    {{ else }} 🔴 <strong>Past</strong>
+                    {{ end }}
+                </span>
+                {{ if .Params.ticket_link }}
+                <a href="{{ .Params.ticket_link }}" target="_blank" class="ticket-link">
+                    Buy Tickets
+                </a>
+                {{ end }}
+            </div>
+
+        </div>
+        {{ end }}
+    </div>
+
+</section>
+{{ end }}

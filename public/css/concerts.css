@@ -1,0 +1,30 @@
+/* 🎤 Concerts Section */
+.concerts-list {
+    max-width: 600px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+/* 🎶 Concert Container */
+.concert-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Ensures all items are centered */
+    justify-content: center;
+    width: 100%;
+}
+
+/* 📌 Individual Concert Item */
+.concert-item {
+    width: 90%; /* Restricts width but allows responsiveness */
+    padding: 15px;
+    border-radius: 8px;
+    background: #222;
+    box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Ensures content is centered */
+    text-align: center;
+    margin: 10px auto; /* Ensures full centering */
+    justify-content: center;
+}

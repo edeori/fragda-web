@@ -1,9 +1,12 @@
-Local Netlify server start to test
+**************************************
+* Local Netlify server start to test *
+**************************************
 
 npx netlify-cms-proxy-server
 
-run app
-
+***********
+* Run App *
+***********
 hugo server -D
 
 local run like on server
