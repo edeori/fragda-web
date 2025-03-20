@@ -1,0 +1,27 @@
+{{ define "main" }}
+<link rel="stylesheet" href="{{ "css/shop-list.css" | relURL }}">
+
+<!-- Payment Configuration -->
+{{ $payment := .Site.GetPage "config/payment" }}
+<meta name="paypal-email" content="{{ $payment.Params.paypal_email }}">
+
+<section class="shop-grid">
+    <div class="product-container">
+        {{ $products := where .Site.RegularPages "Section" "shop" }}
+        {{ range $products }}
+        <div class="product-card">
+            <img src="{{ .Params.image }}" alt="{{ .Title }}" class="product-image">
+            <h2 class="product-title">{{ .Title }}</h2>
+            <p class="product-price">{{ .Params.price }} {{ .Params.currency }}</p>
+            <button class="add-to-cart" data-title="{{ .Title }}" data-price="{{ .Params.price }}"
+                data-currency="{{ .Params.currency }}">
+                🛒 Add to Cart
+            </button>
+        </div>
+        {{ end }}
+    </div>
+</section>
+
+<!-- Cart Sidebar (Partial) -->
+{{ partial "cart.html" . }}
+{{ end }}

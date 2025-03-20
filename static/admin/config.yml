@@ -109,15 +109,32 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Product Name", name: "title", widget: "string" }
-      - { label: "Price", name: "price", widget: "string" }
+      - {
+          label: "Price",
+          name: "price",
+          widget: "number",
+          value_type: "float",
+          min: 0,
+        }
+      - {
+          label: "Currency",
+          name: "currency",
+          widget: "string",
+          default: "EUR",
+        }
       - {
           label: "Product Image",
           name: "image",
           widget: "image",
           choose_url: true,
         }
-      - { label: "Buy Link", name: "buy_link", widget: "string" }
       - { label: "Description", name: "body", widget: "markdown" }
+      - {
+          label: "Delivery Option",
+          name: "delivery_option",
+          widget: "select",
+          options: ["FoxPost", "In-person Pickup", "Post"],
+        }
 
   - name: "contact"
     label: "Contact Page"

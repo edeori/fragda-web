@@ -1,4 +1,5 @@
 {{ define "main" }}
+<link rel="stylesheet" href="{{ "css/concerts.css" | relURL }}">
 <section class="concerts-list">
 
     {{ $concerts := where .Site.RegularPages "Section" "concerts" }}

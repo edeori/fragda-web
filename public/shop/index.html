@@ -48,11 +48,8 @@
 
 	<link rel="stylesheet" href="/css/news.css">
 <link rel="stylesheet" href="/css/custom.css">
-<link rel="stylesheet" href="/css/release.css">
 <link rel="stylesheet" href="/css/header.css">
 <link rel="stylesheet" href="/css/bio.css">
-<link rel="stylesheet" href="/css/concerts.css">
-<link rel="stylesheet" href="/css/contact.css">
 
   </head><body class="ma0 avenir bg-near-white development">
 
@@ -145,11 +142,43 @@
 
     <main class="pb7" role="main">
       
-  <article class="pa3 pa4-ns nested-copy-line-height">
-    <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy mid-gray"></section>
-    <section class="flex-ns flex-wrap justify-around mt5">
-      
-    </section></article>
+<link rel="stylesheet" href="/css/shop-list.css">
+
+
+
+<meta name="paypal-email" content="marton.ferenczi.93@gmail.com">
+
+<section class="shop-grid">
+    <div class="product-container">
+        
+        
+        <div class="product-card">
+            <img src="/images/uploads/unikornis-szikla-sigil-blur2.jpg" alt="item" class="product-image">
+            <h2 class="product-title">item</h2>
+            <p class="product-price">1 </p>
+            <button class="add-to-cart" data-title="item" data-price="1"
+                data-currency="">
+                🛒 Add to Cart
+            </button>
+        </div>
+        
+    </div>
+</section>
+
+
+
+<button id="cart-toggle">🛒</button>
+
+
+<div id="cart-sidebar" class="cart-sidebar">
+    <h2>Your Cart</h2>
+    <ul id="cart-items"></ul>
+    <input class="customer-email" type="email" name="customer-email" placeholder="Your email" required>
+    <button id="checkout-btn" disabled class="checkout-button">💳 Checkout</button>
+</div>
+
+
+<script src="/js/cart.js"></script>
 
     </main>
     <footer class=" bg-black bottom-0 w-100 pa3 tc"

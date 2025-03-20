@@ -30,6 +30,8 @@
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
   </url><url>
+    <loc>http://localhost:1313/config/</loc>
+  </url><url>
     <loc>http://localhost:1313/contact/</loc>
   </url><url>
     <loc>http://localhost:1313/releases/damnation-is-inevitable/</loc>
@@ -37,6 +39,10 @@
     <loc>http://localhost:1313/concerts/dummy/</loc>
   </url><url>
     <loc>http://localhost:1313/concerts/dummy2/</loc>
+  </url><url>
+    <loc>http://localhost:1313/shop/item/</loc>
+  </url><url>
+    <loc>http://localhost:1313/config/payment/</loc>
   </url><url>
     <loc>http://localhost:1313/releases/</loc>
   </url><url>

@@ -18,3 +18,7 @@
   status = 302
   force = true
   query = { invite_token = ":invite_token" }
+
+[functions]
+  directory = "functions"
+
