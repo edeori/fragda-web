@@ -70,13 +70,24 @@ function loadCartSidebar() {
     let li = document.createElement("li");
     li.innerHTML = `<img src="${item.image}" class="cart-item-image" alt="${item.title}">
                           <span class="cart-item-text">${item.title} - ${item.price} ${item.currency}</span>
-                          <button class="cart-delete" onclick="removeFromCart(${index})">✖</button>`;
+                          <button class="cart-delete" data-index="${index}">✖</button>`; // ✅ No inline onclick!
     cartList.appendChild(li);
+  });
+
+  // ✅ Attach event listeners to remove buttons dynamically
+  document.querySelectorAll(".cart-delete").forEach((button) => {
+    button.addEventListener("click", function (event) {
+      let index = this.getAttribute("data-index");
+      removeFromCart(index, event);
+    });
   });
 }
 
 function removeFromCart(index, event) {
-  event.stopPropagation(); // Prevents the event from triggering document click
+  if (event) {
+    event.stopPropagation();
+  }
+
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   cart.splice(index, 1);
   localStorage.setItem("cart", JSON.stringify(cart));
