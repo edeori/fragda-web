@@ -1,0 +1,30 @@
+{{ define "main" }}
+<section class="contact-page">
+    <h1>📩 Get in Touch</h1>
+
+    <!-- Dynamic Email from Markdown -->
+    <p class="contact-email"><a href="mailto:{{ .Params.email }}"><strong>{{ .Params.email }}</strong></a></p>
+
+    <!-- Contact Form -->
+    <form name="contact" method="POST" data-netlify="true" class="contact-form">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+        <!-- Subject Dropdown -->
+        <label for="subject">Subject</label>
+        <select id="subject" name="subject" required>
+            {{ range .Params.subjects }}
+            <option value="{{ . }}">{{ . }}</option>
+            {{ end }}
+        </select>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+{{ end }}

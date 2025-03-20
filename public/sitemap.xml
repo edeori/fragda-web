@@ -14,9 +14,6 @@
     <loc>http://localhost:1313/concerts/</loc>
     <lastmod>2025-02-14T22:28:09+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/contact/</loc>
-    <lastmod>2025-02-14T22:28:09+01:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/shop/</loc>
     <lastmod>2025-02-14T22:28:09+01:00</lastmod>
   </url><url>
@@ -33,9 +30,13 @@
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
   </url><url>
+    <loc>http://localhost:1313/contact/</loc>
+  </url><url>
     <loc>http://localhost:1313/releases/damnation-is-inevitable/</loc>
   </url><url>
     <loc>http://localhost:1313/concerts/dummy/</loc>
+  </url><url>
+    <loc>http://localhost:1313/concerts/dummy2/</loc>
   </url><url>
     <loc>http://localhost:1313/releases/</loc>
   </url><url>

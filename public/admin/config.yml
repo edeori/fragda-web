@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   branch: main
 
-local_backend: true  # Enables local testing without Netlify
+local_backend: true # Enables local testing without Netlify
 
 media_folder: "static/images/uploads"
 public_folder: "/images/uploads"
@@ -15,9 +15,25 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
-      - { label: "Featured Image", name: "image", widget: "image", choose_url: true, required: false }
-      - { label: "YouTube Embed URL", name: "youtube", widget: "string", required: false }
+      - {
+          label: "Date",
+          name: "date",
+          widget: "datetime",
+          format: "YYYY-MM-DD",
+        }
+      - {
+          label: "Featured Image",
+          name: "image",
+          widget: "image",
+          choose_url: true,
+          required: false,
+        }
+      - {
+          label: "YouTube Embed URL",
+          name: "youtube",
+          widget: "string",
+          required: false,
+        }
       - { label: "Body", name: "body", widget: "markdown" }
 
   - name: "bio"
@@ -39,14 +55,29 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Year", name: "year", widget: "number" }
-      - { label: "Album Cover", name: "image", widget: "image", choose_url: true }
-      - { label: "Spotify Album Link", name: "spotify", widget: "string", required: false } # Global album link
+      - {
+          label: "Album Cover",
+          name: "image",
+          widget: "image",
+          choose_url: true,
+        }
+      - {
+          label: "Spotify Album Link",
+          name: "spotify",
+          widget: "string",
+          required: false,
+        } # Global album link
       - label: "Songs"
         name: "songs"
         widget: "list"
         fields:
           - { label: "Song Title", name: "title", widget: "string" }
-          - { label: "Spotify Link", name: "spotify", widget: "string", required: false }
+          - {
+              label: "Spotify Link",
+              name: "spotify",
+              widget: "string",
+              required: false,
+            }
       - { label: "Body", name: "body", widget: "markdown", required: false }
 
   - name: "concerts"
@@ -56,9 +87,19 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Date & Time", name: "datetime", widget: "datetime", format: "YYYY-MM-DD HH:mm:ss" }
+      - {
+          label: "Date & Time",
+          name: "datetime",
+          widget: "datetime",
+          format: "YYYY-MM-DD HH:mm:ss",
+        }
       - { label: "Location", name: "location", widget: "string" }
-      - { label: "Ticket Link", name: "ticket_link", widget: "string", required: false }
+      - {
+          label: "Ticket Link",
+          name: "ticket_link",
+          widget: "string",
+          required: false,
+        }
       - { label: "Body", name: "body", widget: "markdown" }
 
   - name: "shop"
@@ -69,6 +110,22 @@ collections:
     fields:
       - { label: "Product Name", name: "title", widget: "string" }
       - { label: "Price", name: "price", widget: "string" }
-      - { label: "Product Image", name: "image", widget: "image", choose_url: true }
+      - {
+          label: "Product Image",
+          name: "image",
+          widget: "image",
+          choose_url: true,
+        }
       - { label: "Buy Link", name: "buy_link", widget: "string" }
       - { label: "Description", name: "body", widget: "markdown" }
+
+  - name: "contact"
+    label: "Contact Page"
+    delete: false
+    files:
+      - label: "Contact"
+        name: "contact"
+        file: "content/contact/contact.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
