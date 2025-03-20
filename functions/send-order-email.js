@@ -4,22 +4,20 @@ exports.handler = async function (event) {
   try {
     console.log("📩 Function `send-order-email` triggered");
 
-    // ✅ Log incoming request body
-    console.log("🔍 Incoming Request Body:", event.body);
-
     const order = JSON.parse(event.body);
-
-    console.log("🛒 Order Details:", order);
 
     if (!order.customerEmail) {
       throw new Error("❌ Missing `customerEmail` in request");
     }
 
     console.log("📧 EMAIL_USER:", process.env.EMAIL_USER);
-    console.log("🔐 EMAIL_PASS:", process.env.EMAIL_PASS ? "********" : "❌ MISSING");
+    console.log(
+      "🔐 EMAIL_PASS:",
+      process.env.EMAIL_PASS ? "********" : "❌ MISSING"
+    );
 
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-      throw new Error("❌ Environment variables `EMAIL_USER` or `EMAIL_PASS` are missing.");
+      throw new Error("❌ Missing SMTP credentials");
     }
 
     let transporter = nodemailer.createTransport({
@@ -30,11 +28,25 @@ exports.handler = async function (event) {
       },
     });
 
+    let emailBody = `
+      <h2>Thank you for your order!</h2>
+      <p>We have received your order. Below are your details:</p>
+      <ul>
+        ${order.cart
+          .map(
+            (item) => `<li>${item.title} - ${item.price} ${item.currency}</li>`
+          )
+          .join("")}
+      </ul>
+      <p><strong>Total: ${order.totalAmount} EUR</strong></p>
+      <p>We will process your order shortly.</p>
+    `;
+
     let mailOptions = {
-      from: process.env.EMAIL_USER,
+      from: `"Fragda Shop" <${process.env.EMAIL_USER}>`,
       to: order.customerEmail,
-      subject: "Your Order Confirmation",
-      text: `Thank you for your order! Total: ${order.total} EUR.`,
+      subject: "Your Fragda Shop Order Confirmation",
+      html: emailBody,
     };
 
     console.log("📨 Sending email...");

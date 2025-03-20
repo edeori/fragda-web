@@ -20,7 +20,7 @@ function setupCartEvents() {
         });
     }
 
-    // Close Cart when clicking outside of it
+    // Close cart when clicking outside
     document.addEventListener("click", function (event) {
         if (!cartSidebar.contains(event.target) && event.target !== cartToggle) {
             cartSidebar.classList.remove("cart-visible");
@@ -57,6 +57,8 @@ function loadCartSidebar() {
         `;
         cartList.appendChild(li);
     });
+
+    document.getElementById("cart-total").textContent = `Total: ${calculateTotal()} EUR`;
 
     attachRemoveListeners();
 }
@@ -110,6 +112,10 @@ function openCart() {
     document.getElementById("cart-sidebar").classList.add("cart-visible");
 }
 
+function calculateTotal() {
+    return getCart().reduce((sum, item) => sum + parseFloat(item.price), 0).toFixed(2);
+}
+
 // ===============================
 // 💳 CHECKOUT
 // ===============================
@@ -131,17 +137,15 @@ function processCheckout() {
     }
 
     let customerEmail = document.querySelector(".customer-email").value.trim();
-    if (!customerEmail || !/^[^\s@]+@[^\s@]+.[^\s@]+$/.test(customerEmail)) {
+    if (!customerEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customerEmail)) {
         alert("Please enter a valid email address.");
         return;
     }
 
-    let totalAmount = cart.reduce((sum, item) => sum + parseFloat(item.price), 0);
+    let totalAmount = calculateTotal();
 
-    // ✅ Store order details
     localStorage.setItem("pendingOrder", JSON.stringify({ cart, totalAmount, customerEmail }));
 
-    // TEMPORARY: Simulate successful order
     alert(`Simulating successful payment. Sending order email to ${customerEmail}...`);
     sendOrderEmail();
 }
@@ -168,7 +172,6 @@ function sendOrderEmail() {
     });
 }
 
-// Check for payment success and trigger email
 if (window.location.pathname.includes("checkout-success")) {
     sendOrderEmail();
 }
