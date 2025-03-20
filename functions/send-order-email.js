@@ -2,68 +2,54 @@ const nodemailer = require("nodemailer");
 
 exports.handler = async function (event) {
   try {
+    console.log("📩 Function `send-order-email` triggered");
+
+    // ✅ Log incoming request body
+    console.log("🔍 Incoming Request Body:", event.body);
+
     const order = JSON.parse(event.body);
 
+    console.log("🛒 Order Details:", order);
+
+    if (!order.customerEmail) {
+      throw new Error("❌ Missing `customerEmail` in request");
+    }
+
+    console.log("📧 EMAIL_USER:", process.env.EMAIL_USER);
+    console.log("🔐 EMAIL_PASS:", process.env.EMAIL_PASS ? "********" : "❌ MISSING");
+
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      throw new Error("❌ Environment variables `EMAIL_USER` or `EMAIL_PASS` are missing.");
+    }
+
     let transporter = nodemailer.createTransport({
-      service: "gmail", // Change if using a different SMTP provider
+      service: "gmail",
       auth: {
-        user: process.env.EMAIL_USER, // Fetch from Netlify environment variables
+        user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
       },
     });
 
-    console.log("Incoming order:", order);
-
-    // Email to the customer
-    let customerMailOptions = {
+    let mailOptions = {
       from: process.env.EMAIL_USER,
-      to: order.customerEmail, // Customer's email
+      to: order.customerEmail,
       subject: "Your Order Confirmation",
-      text: `
-Thank you for your order, ${order.customerName}!
-
-Here are your order details:
-
-Order Details:
-${order.items.map((i) => `- ${i.title} - ${i.price} ${i.currency}`).join("\n")}
-
-Total: ${order.total} EUR
-
-Your order will be shipped to:
-${order.shippingAddress}
-            `,
+      text: `Thank you for your order! Total: ${order.total} EUR.`,
     };
 
-    // Email to the shop owner (you)
-    let ownerMailOptions = {
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER, // Owner's email
-      subject: "New Order Received",
-      text: `
-New Order Received!
-
-Customer Name: ${order.customerName}
-Customer Email: ${order.customerEmail}
-Shipping Address: ${order.shippingAddress}
-
-Order Details:
-${order.items.map((i) => `- ${i.title} - ${i.price} ${i.currency}`).join("\n")}
-
-Total: ${order.total} EUR
-            `,
-    };
-
-    // Send both emails in parallel
-    await Promise.all([
-      transporter.sendMail(customerMailOptions),
-      transporter.sendMail(ownerMailOptions),
-    ]);
+    console.log("📨 Sending email...");
+    await transporter.sendMail(mailOptions);
+    console.log("✅ Email Sent Successfully!");
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: "Emails Sent" }),
+      body: JSON.stringify({ message: "Email sent successfully!" }),
     };
   } catch (error) {
-    return { statusCode: 500, body: JSON.stringify({ error: error.message }) };
+    console.error("❌ Error:", error.message);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: error.message }),
+    };
   }
 };
