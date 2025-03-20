@@ -1,165 +1,174 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const cartToggle = document.getElementById("cart-toggle");
-  const cartSidebar = document.getElementById("cart-sidebar");
+    setupCartEvents();
+    loadCartSidebar();
+});
 
-  // Toggle Cart Sidebar
-  if (cartToggle && cartSidebar) {
-    cartToggle.addEventListener("click", function (event) {
-      event.stopPropagation();
-      cartSidebar.classList.toggle("cart-visible");
-    });
-  }
+// ===============================
+// 🛒 CART FUNCTIONALITY
+// ===============================
 
-  // Close Cart when clicking outside of it
-  document.addEventListener("click", function (event) {
-    if (
-      !cartSidebar.contains(event.target) && // Click is not inside cart
-      event.target !== cartToggle // Click is not on cart toggle button
-    ) {
-      cartSidebar.classList.remove("cart-visible");
+function setupCartEvents() {
+    const cartToggle = document.getElementById("cart-toggle");
+    const cartSidebar = document.getElementById("cart-sidebar");
+    const checkoutBtn = document.getElementById("checkout-btn");
+    const emailInput = document.querySelector(".customer-email");
+
+    if (cartToggle && cartSidebar) {
+        cartToggle.addEventListener("click", function (event) {
+            event.stopPropagation();
+            cartSidebar.classList.toggle("cart-visible");
+        });
     }
-  });
-});
 
-document.addEventListener("DOMContentLoaded", function () {
-  loadCartSidebar();
-
-  document.querySelectorAll(".add-to-cart").forEach((button) => {
-    button.addEventListener("click", function () {
-      const title = this.getAttribute("data-title");
-      const price = this.getAttribute("data-price");
-      const currency = this.getAttribute("data-currency");
-      const image =
-        this.closest(".product-card").querySelector(".product-image").src;
-
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cart.push({ title, price, currency, image });
-      localStorage.setItem("cart", JSON.stringify(cart));
-
-      loadCartSidebar(); // Refresh cart UI
+    // Close Cart when clicking outside of it
+    document.addEventListener("click", function (event) {
+        if (!cartSidebar.contains(event.target) && event.target !== cartToggle) {
+            cartSidebar.classList.remove("cart-visible");
+        }
     });
-  });
 
-  // Validate email and enable/disable checkout button
-  const emailInput = document.querySelector(".customer-email");
-  const checkoutBtn = document.getElementById("checkout-btn");
+    if (checkoutBtn && emailInput) {
+        emailInput.addEventListener("input", validateEmail);
+        checkoutBtn.addEventListener("click", processCheckout);
+    }
 
-  if (emailInput && checkoutBtn) {
-    emailInput.addEventListener("input", function () {
-      const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value); // ✅ Validate email
-      checkoutBtn.disabled = !isValid;
-      checkoutBtn.classList.toggle("enabled", isValid);
+    document.querySelectorAll(".add-to-cart").forEach((button) => {
+        button.addEventListener("click", addToCart);
     });
-  }
+}
 
-  const cartToggle = document.getElementById("cart-toggle");
-  const cartClose = document.getElementById("cart-close");
-
-  if (cartToggle) cartToggle.addEventListener("click", toggleCart);
-  if (cartClose) cartClose.addEventListener("click", toggleCart);
-  if (checkoutBtn) checkoutBtn.addEventListener("click", processCheckout);
-});
+// ===============================
+// 🛍 CART MANAGEMENT
+// ===============================
 
 function loadCartSidebar() {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  let cartList = document.getElementById("cart-items");
-  if (!cartList) return;
-  cartList.innerHTML = "";
+    const cart = getCart();
+    const cartList = document.getElementById("cart-items");
 
-  cart.forEach((item, index) => {
-    let li = document.createElement("li");
-    li.innerHTML = `<img src="${item.image}" class="cart-item-image" alt="${item.title}">
-                          <span class="cart-item-text">${item.title} - ${item.price} ${item.currency}</span>
-                          <button class="cart-delete" data-index="${index}">✖</button>`; // ✅ No inline onclick!
-    cartList.appendChild(li);
-  });
+    if (!cartList) return;
+    cartList.innerHTML = "";
 
-  // ✅ Attach event listeners to remove buttons dynamically
-  document.querySelectorAll(".cart-delete").forEach((button) => {
-    button.addEventListener("click", function (event) {
-      let index = this.getAttribute("data-index");
-      removeFromCart(index, event);
+    cart.forEach((item, index) => {
+        let li = document.createElement("li");
+        li.innerHTML = `
+            <img src="${item.image}" class="cart-item-image" alt="${item.title}">
+            <span class="cart-item-text">${item.title} - ${item.price} ${item.currency}</span>
+            <button class="cart-delete" data-index="${index}">✖</button>
+        `;
+        cartList.appendChild(li);
     });
-  });
+
+    attachRemoveListeners();
 }
 
-function removeFromCart(index, event) {
-  if (event) {
+function addToCart(event) {
+    const button = event.target;
+    const title = button.getAttribute("data-title");
+    const price = button.getAttribute("data-price");
+    const currency = button.getAttribute("data-currency");
+    const image = button.closest(".product-card").querySelector(".product-image").src;
+
+    let cart = getCart();
+    cart.push({ title, price, currency, image });
+    saveCart(cart);
+
+    loadCartSidebar(); 
+    openCart();
+}
+
+function removeFromCart(event) {
     event.stopPropagation();
-  }
+    
+    const index = event.target.getAttribute("data-index");
+    let cart = getCart();
+    cart.splice(index, 1);
+    saveCart(cart);
 
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart.splice(index, 1);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  loadCartSidebar(); // Refresh cart display
+    loadCartSidebar();
 }
 
-function toggleCart() {
-  document.getElementById("cart-sidebar").classList.toggle("open");
+// Attach event listeners dynamically after cart is loaded
+function attachRemoveListeners() {
+    document.querySelectorAll(".cart-delete").forEach((button) => {
+        button.addEventListener("click", removeFromCart);
+    });
+}
+
+// ===============================
+// 🔄 CART UTILITIES
+// ===============================
+
+function getCart() {
+    return JSON.parse(localStorage.getItem("cart")) || [];
+}
+
+function saveCart(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function openCart() {
+    document.getElementById("cart-sidebar").classList.add("cart-visible");
+}
+
+// ===============================
+// 💳 CHECKOUT
+// ===============================
+
+function validateEmail() {
+    const emailInput = document.querySelector(".customer-email");
+    const checkoutBtn = document.getElementById("checkout-btn");
+    const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value);
+
+    checkoutBtn.disabled = !isValid;
+    checkoutBtn.classList.toggle("enabled", isValid);
 }
 
 function processCheckout() {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  if (cart.length === 0) {
-    alert("Your cart is empty!");
-    return;
-  }
+    let cart = getCart();
+    if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
 
-  // ✅ Get email from the input field
-  let customerEmail = document.querySelector(".customer-email").value.trim();
-  if (!customerEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customerEmail)) {
-    alert("Please enter a valid email address.");
-    return;
-  }
+    let customerEmail = document.querySelector(".customer-email").value.trim();
+    if (!customerEmail || !/^[^\s@]+@[^\s@]+.[^\s@]+$/.test(customerEmail)) {
+        alert("Please enter a valid email address.");
+        return;
+    }
 
-  let totalAmount = cart.reduce((sum, item) => sum + parseFloat(item.price), 0);
-  let paypalEmail = document
-    .querySelector("meta[name='paypal-email']")
-    .getAttribute("content");
+    let totalAmount = cart.reduce((sum, item) => sum + parseFloat(item.price), 0);
 
-  let paypalUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalEmail}&amount=${totalAmount}&currency_code=EUR&item_name=Fragda Shop Order&return=${window.location.origin}/checkout-success`;
+    // ✅ Store order details
+    localStorage.setItem("pendingOrder", JSON.stringify({ cart, totalAmount, customerEmail }));
 
-  // ✅ Store email with order details before redirecting
-  localStorage.setItem(
-    "pendingOrder",
-    JSON.stringify({ cart, totalAmount, customerEmail })
-  );
-
-  // TEMPORARY: Instead of redirecting to PayPal, simulate successful payment
-  alert(
-    `Simulating successful payment. Sending order email to ${customerEmail}...`
-  );
-  sendOrderEmail();
-
-  // window.location.href = paypalUrl; // Comment this out to prevent redirection
+    // TEMPORARY: Simulate successful order
+    alert(`Simulating successful payment. Sending order email to ${customerEmail}...`);
+    sendOrderEmail();
 }
 
-// Function to send the email AFTER payment success
+// ===============================
+// 📧 EMAIL SENDING
+// ===============================
+
 function sendOrderEmail() {
-  let pendingOrder = JSON.parse(localStorage.getItem("pendingOrder"));
-  if (!pendingOrder) return;
+    let pendingOrder = JSON.parse(localStorage.getItem("pendingOrder"));
+    if (!pendingOrder) return;
 
-  let orderData = {
-    items: pendingOrder.cart,
-    total: pendingOrder.totalAmount,
-    customerEmail: pendingOrder.customerEmail,
-  };
-
-  fetch("/.netlify/functions/send-order-email", {
-    method: "POST",
-    body: JSON.stringify(orderData),
-    headers: { "Content-Type": "application/json" },
-  })
+    fetch("/.netlify/functions/send-order-email", {
+        method: "POST",
+        body: JSON.stringify(pendingOrder),
+        headers: { "Content-Type": "application/json" },
+    })
     .then(() => {
-      alert("Order confirmation email sent!");
-      localStorage.removeItem("pendingOrder");
+        alert("Order confirmation email sent!");
+        localStorage.removeItem("pendingOrder");
     })
     .catch(() => {
-      alert("Error sending order email. Please contact support.");
+        alert("Error sending order email. Please contact support.");
     });
 }
 
 // Check for payment success and trigger email
 if (window.location.pathname.includes("checkout-success")) {
-  sendOrderEmail();
+    sendOrderEmail();
 }

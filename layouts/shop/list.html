@@ -13,7 +13,7 @@
             <img src="{{ .Params.image }}" alt="{{ .Title }}" class="product-image">
             <h2 class="product-title">{{ .Title }}</h2>
             <p class="product-price">{{ .Params.price }} {{ .Params.currency }}</p>
-            <button class="add-to-cart" data-title="{{ .Title }}" data-price="{{ .Params.price }}"
+            <button id="add-to-cart" class="add-to-cart" data-title="{{ .Title }}" data-price="{{ .Params.price }}"
                 data-currency="{{ .Params.currency }}">
                 🛒 Add to Cart
             </button>
