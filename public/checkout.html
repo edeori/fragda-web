@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="css/checkout.css">
+<link rel="stylesheet" href="css/form.css">
+<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="css/cart-item.css">
+<script src="js/checkout-form.js"></script>
+
+<div class="checkout-layout">
+    <div class="cart-section">
+        <h2>Your Cart</h2>
+        <ul id="cart-summary"></ul>
+        <div id="cart-total" class="cart-total"></div>
+    </div>
+
+    <form id="order-form" class="styled-form">
+        <!-- Name -->
+        <label for="name">Full Name <span>*</span></label>
+        <input type="text" id="name" name="name" required>
+
+        <!-- Email -->
+        <label for="email">Email Address <span>*</span></label>
+        <input type="email" id="email" name="email" required>
+
+        <!-- Phone -->
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" pattern="^[+0-9\s\-]{7,20}$" placeholder="+36 30 123 4567">
+
+        <!-- Shipping Method -->
+        <label for="shipping-method">Shipping Method <span>*</span></label>
+        <select id="shipping-method" name="shippingMethod" required>
+            <option value="pickup">Personal Pickup</option>
+            <option value="post">Postal Delivery</option>
+            <option value="courier">Courier Service</option>
+            <option value="other">Parcel Locker / Foxpost / Other</option>
+        </select>
+
+        <!-- Address Fields (Shown conditionally) -->
+        <fieldset id="shipping-address" style="display: none;">
+            <legend>Shipping Address</legend>
+
+            <label for="country">Country <span>*</span></label>
+            <input type="text" id="country" name="country">
+
+            <label for="zip">ZIP / Postal Code <span>*</span></label>
+            <input type="text" id="zip" name="zip" pattern="^[0-9]{4,6}$">
+
+            <label for="city">City <span>*</span></label>
+            <input type="text" id="city" name="city">
+
+            <label for="street">Street Address <span>*</span></label>
+            <input type="text" id="street" name="street" placeholder="Street name, house number, floor, door">
+        </fieldset>
+
+        <!-- Payment Method -->
+        <label for="payment-method">Payment Method <span>*</span></label>
+        <select id="payment-method" name="paymentMethod" required>
+            <option value="paypal">PayPal</option>
+            <option value="bank-transfer">Bank Transfer</option>
+            <option value="cod">Cash on Delivery</option>
+        </select>
+
+        <!-- Order Notes -->
+        <label for="order-notes">Message / Notes</label>
+        <textarea id="order-notes" name="orderNotes" placeholder="Any special instructions..." rows="4"></textarea>
+
+        <button type="submit">Place Order</button>
+    </form>
+</div>

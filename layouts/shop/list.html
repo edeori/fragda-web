@@ -1,5 +1,6 @@
 {{ define "main" }}
 <link rel="stylesheet" href="{{ "css/shop-list.css" | relURL }}">
+<link rel="stylesheet" href={{ "css/cart-item.css" | relURL }}>
 
 <!-- Payment Configuration -->
 {{ $payment := .Site.GetPage "config/payment" }}

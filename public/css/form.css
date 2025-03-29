@@ -12,7 +12,7 @@
 }
 
 /* 🚀 Contact Form */
-.contact-form {
+.styled-form {
     background: #222;
     padding: 20px;
     border-radius: 10px;
@@ -23,9 +23,9 @@
 }
 
 /* 📝 Input Fields & Dropdown */
-.contact-form input,
-.contact-form textarea,
-.contact-form select {
+.styled-form input,
+.styled-form textarea,
+.styled-form select {
     width: 100%;
     padding: 12px;
     border-radius: 5px;
@@ -35,13 +35,13 @@
 }
 
 /* 🏷️ Labels */
-.contact-form label {
+.styled-form label {
     font-weight: bold;
     text-align: left;
 }
 
 /* ✉️ Submit Button */
-.contact-form button {
+.styled-form button {
     background: #ffcc00;
     color: black;
     padding: 12px;
@@ -50,13 +50,13 @@
     font-weight: bold;
 }
 
-.contact-form button:hover {
-    background: #ff4444;
+.styled-form button:hover {
+    background: #28a745;
     color: white;
 }
 
 /* 📝 Message Box (Textarea) */
-.contact-form textarea {
+.styled-form textarea {
     width: 100%;
     padding: 12px;
     border-radius: 5px;

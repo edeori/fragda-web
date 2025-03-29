@@ -154,31 +154,6 @@
   margin-right: auto;
 }
 
-/* 🖼 Cart Item Image */
-.cart-item-image {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  border-radius: 5px;
-  margin-right: 10px;
-}
-
-/* ❌ Delete Button */
-.cart-delete {
-  background: #ff4444;
-  color: white;
-  border: none;
-  font-size: 16px;
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background 0.3s;
-}
-
-.cart-delete:hover {
-  background: #cc0000;
-}
-
 /* =============================== */
 /* 🛒 CART TOGGLE BUTTON */
 /* =============================== */

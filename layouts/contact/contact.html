@@ -1,5 +1,4 @@
 {{ define "main" }}
-<link rel="stylesheet" href={{ "css/contact.css" | relURL }}>
 <section class="contact-page">
     <h1>📩 Get in Touch</h1>
 
@@ -7,7 +6,7 @@
     <p class="contact-email"><a href="mailto:{{ .Params.email }}"><strong>{{ .Params.email }}</strong></a></p>
 
     <!-- Contact Form -->
-    <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="contact-form">
+    <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="styled-form">
         <input type="hidden" name="form-name" value="contact">
 
         <label for="name">Name</label>

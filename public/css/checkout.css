@@ -1,0 +1,85 @@
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+input {
+  padding: 8px;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+fieldset {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 15px;
+}
+
+legend {
+  font-weight: bold;
+}
+
+span {
+  color: red;
+}
+
+.checkout-layout {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.cart-section {
+  flex: 1 1 40%;
+  background: #222;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 500px;
+}
+
+#cart-summary {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#cart-summary li {
+  display: flex;
+  align-items: center;
+  background: #333;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+}
+
+#cart-summary img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+.styled-form {
+  flex: 1 1 50%;
+  max-width: 600px;
+}
+
+.cart-total {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #ffcc00;
+  text-align: right;
+}

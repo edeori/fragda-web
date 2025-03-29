@@ -21,11 +21,11 @@ function setupCartEvents() {
   }
 
   // Close cart when clicking outside
-//   document.addEventListener("click", function (event) {
-//     if (!cartSidebar.contains(event.target) && event.target !== cartToggle) {
-//       cartSidebar.classList.remove("cart-visible");
-//     }
-//   });
+  //   document.addEventListener("click", function (event) {
+  //     if (!cartSidebar.contains(event.target) && event.target !== cartToggle) {
+  //       cartSidebar.classList.remove("cart-visible");
+  //     }
+  //   });
 
   if (checkoutBtn && emailInput) {
     emailInput.addEventListener("input", validateEmail);
@@ -149,53 +149,30 @@ function validateEmail() {
 }
 
 function processCheckout() {
-  let cart = getCart();
+  const cart = getCart();
+  const customerEmail = document.querySelector(".customer-email").value.trim();
+
   if (cart.length === 0) {
-    alert("Your cart is empty!");
+    alert("A kosár üres!");
     return;
   }
 
-  let customerEmail = document.querySelector(".customer-email").value.trim();
-  if (!customerEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customerEmail)) {
-    alert("Please enter a valid email address.");
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customerEmail)) {
+    alert("Adj meg egy érvényes email címet.");
     return;
   }
 
-  let totalAmount = calculateTotal();
+  const totalAmount = calculateTotal();
 
   localStorage.setItem(
     "pendingOrder",
-    JSON.stringify({ cart, totalAmount, customerEmail })
-  );
-
-  alert(
-    `Simulating successful payment. Sending order email to ${customerEmail}...`
-  );
-  sendOrderEmail();
-}
-
-// ===============================
-// 📧 EMAIL SENDING
-// ===============================
-
-function sendOrderEmail() {
-  let pendingOrder = JSON.parse(localStorage.getItem("pendingOrder"));
-  if (!pendingOrder) return;
-
-  fetch("/.netlify/functions/send-order-email", {
-    method: "POST",
-    body: JSON.stringify(pendingOrder),
-    headers: { "Content-Type": "application/json" },
-  })
-    .then(() => {
-      alert("Order confirmation email sent!");
-      localStorage.removeItem("pendingOrder");
+    JSON.stringify({
+      cart,
+      customerEmail,
+      totalAmount,
     })
-    .catch(() => {
-      alert("Error sending order email. Please contact support.");
-    });
-}
+  );
 
-if (window.location.pathname.includes("checkout-success")) {
-  sendOrderEmail();
+  // Átirányítás új oldalra
+  window.location.href = "/checkout.html";
 }
