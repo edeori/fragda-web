@@ -81,17 +81,27 @@ ${shipping.country || ""}
       </tr>
     </thead>
     <tbody>
-      ${(order.cart || [])
-        .map(
-          (item) => `
-        <tr>
-          <td style="padding:8px;"><img src="${item.image}" alt="${item.title}" width="50" style="border-radius:4px;"></td>
-          <td style="padding:8px;">${item.title}</td>
-          <td style="padding:8px; text-align:right;">${item.price} ${item.currency}</td>
-        </tr>
-      `
-        )
-        .join("")}
+    ${(order.cart || [])
+      .map((item) => {
+        const sizeRow = item.size
+          ? `<div style="font-size: 12px; color: #666;">Méret: ${item.size}</div>`
+          : "";
+        return `
+          <tr>
+            <td style="padding:8px;">
+              <img src="${item.image}" alt="${item.title}" width="50" style="border-radius:4px;">
+            </td>
+            <td style="padding:8px;">
+              ${item.title}
+              ${sizeRow}
+            </td>
+            <td style="padding:8px; text-align:right;">
+              ${item.price} ${item.currency}
+            </td>
+          </tr>
+        `;
+      })
+      .join("")}    
     </tbody>
   </table>
 
@@ -124,8 +134,12 @@ Order ID: ${orderId}
 
 Items:
 ${(order.cart || [])
-  .map((item) => `- ${item.title} (${item.price} ${item.currency})`)
+  .map((item) => {
+    const sizeText = item.size ? `, Size: ${item.size}` : "";
+    return `- ${item.title} (${item.price} ${item.currency}${sizeText})`;
+  })
   .join("\n")}
+
 
 Total: ${order.totalAmount} ${order.currency}
 

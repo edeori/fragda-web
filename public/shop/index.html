@@ -141,8 +141,9 @@
 
     <main class="pb7" role="main">
       
-<link rel="stylesheet" href="/css/shop-list.css">
+<link rel="stylesheet" href=/css/shop-list.css>
 <link rel="stylesheet" href=/css/cart-item.css>
+<link rel="stylesheet" href=/css/product-card.css>
 
 
 
@@ -153,15 +154,45 @@
         
         
         <div class="product-card">
-            <img src="/images/uploads/unikornis-szikla-sigil-blur2.jpg" alt="item" class="product-image">
-            <h2 class="product-title">item</h2>
-            <p class="product-price">1 EUR</p>
-            <button id="add-to-cart" class="add-to-cart" data-title="item" data-price="1"
-                data-currency="EUR">
-                🛒 Add to Cart
-            </button>
-        </div>
+    <img src="/images/uploads/unikornis-szikla-sigil-blur2.jpg" alt="item" class="product-image">
+    <h2 class="product-title">item</h2>
+    <p class="product-price">1 EUR</p>
+
+    
+
+    <button class="add-to-cart" data-title="item" data-price="1"
+        data-currency="EUR">
+        🛒 Add to Cart
+    </button>
+</div>
         
+        <div class="product-card">
+    <img src="/images/uploads/0026629702_36.jpg" alt="Polo 1" class="product-image">
+    <h2 class="product-title">Polo 1</h2>
+    <p class="product-price">5 EUR</p>
+
+    
+    <label for="size-polo-1" class="product-label">Size:</label>
+    <select class="product-size" id="size-polo-1">
+        
+        <option value="S">S</option>
+        
+        <option value="M">M</option>
+        
+        <option value="L">L</option>
+        
+        <option value="XL">XL</option>
+        
+    </select>
+    
+
+    <button class="add-to-cart" data-title="Polo 1" data-price="5"
+        data-currency="EUR">
+        🛒 Add to Cart
+    </button>
+</div>
+        
+
     </div>
 </section>
 

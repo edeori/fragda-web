@@ -130,10 +130,13 @@ collections:
         }
       - { label: "Description", name: "body", widget: "markdown" }
       - {
-          label: "Delivery Option",
-          name: "delivery_option",
+          label: "Available Sizes",
+          name: "availableSizes",
           widget: "select",
-          options: ["FoxPost", "In-person Pickup", "Post"],
+          multiple: true,
+          options: ["XS", "S", "M", "L", "XL", "XXL", "One Size"],
+          required: false,
+          hint: "Select all sizes available for this product"
         }
 
   - name: "contact"

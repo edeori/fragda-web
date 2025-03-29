@@ -1,6 +1,7 @@
 {{ define "main" }}
-<link rel="stylesheet" href="{{ "css/shop-list.css" | relURL }}">
+<link rel="stylesheet" href={{ "css/shop-list.css" | relURL }}>
 <link rel="stylesheet" href={{ "css/cart-item.css" | relURL }}>
+<link rel="stylesheet" href={{ "css/product-card.css" | relURL }}>
 
 <!-- Payment Configuration -->
 {{ $payment := .Site.GetPage "config/payment" }}
@@ -10,16 +11,9 @@
     <div class="product-container">
         {{ $products := where .Site.RegularPages "Section" "shop" }}
         {{ range $products }}
-        <div class="product-card">
-            <img src="{{ .Params.image }}" alt="{{ .Title }}" class="product-image">
-            <h2 class="product-title">{{ .Title }}</h2>
-            <p class="product-price">{{ .Params.price }} {{ .Params.currency }}</p>
-            <button id="add-to-cart" class="add-to-cart" data-title="{{ .Title }}" data-price="{{ .Params.price }}"
-                data-currency="{{ .Params.currency }}">
-                🛒 Add to Cart
-            </button>
-        </div>
+        {{ partial "product-card.html" . }}
         {{ end }}
+
     </div>
 </section>
 

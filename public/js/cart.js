@@ -58,9 +58,12 @@ async function loadCartSidebar() {
 
 async function renderCartItem(item, index) {
   const template = await fetchCartItemTemplate();
+  const sizeLabel = item.size ? `Size: ${item.size}` : "";
+
   let html = template
     .replace(/{{image}}/g, item.image)
     .replace(/{{title}}/g, item.title)
+    .replace(/{{size}}/g, sizeLabel)
     .replace(/{{price}}/g, item.price)
     .replace(/{{currency}}/g, item.currency)
     .replace(/{{index}}/g, index);
@@ -80,15 +83,24 @@ async function fetchCartItemTemplate() {
 
 function addToCart(event) {
   const button = event.target;
+  const productCard = button.closest(".product-card");
+
   const title = button.getAttribute("data-title");
   const price = button.getAttribute("data-price");
   const currency = button.getAttribute("data-currency");
-  const image = button
-    .closest(".product-card")
-    .querySelector(".product-image").src;
+  const image = productCard.querySelector(".product-image").src;
+
+  const sizeSelect = productCard.querySelector(".product-size");
+  const size = sizeSelect ? sizeSelect.value : null;
+
+  let cartItem = { title, price, currency, image };
+
+  if (size) {
+    cartItem.size = size;
+  }
 
   let cart = getCart();
-  cart.push({ title, price, currency, image });
+  cart.push(cartItem);
   saveCart(cart);
 
   loadCartSidebar();

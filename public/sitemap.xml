@@ -44,6 +44,8 @@
   </url><url>
     <loc>http://localhost:1313/config/payment/</loc>
   </url><url>
+    <loc>http://localhost:1313/shop/polo-1/</loc>
+  </url><url>
     <loc>http://localhost:1313/releases/</loc>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>

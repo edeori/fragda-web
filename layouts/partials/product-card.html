@@ -1,0 +1,19 @@
+<div class="product-card">
+    <img src="{{ .Params.image }}" alt="{{ .Title }}" class="product-image">
+    <h2 class="product-title">{{ .Title }}</h2>
+    <p class="product-price">{{ .Params.price }} {{ .Params.currency }}</p>
+
+    {{ if .Params.availableSizes }}
+    <label for="size-{{ .Title | urlize }}" class="product-label">Size:</label>
+    <select class="product-size" id="size-{{ .Title | urlize }}">
+        {{ range .Params.availableSizes }}
+        <option value="{{ . }}">{{ . }}</option>
+        {{ end }}
+    </select>
+    {{ end }}
+
+    <button class="add-to-cart" data-title="{{ .Title }}" data-price="{{ .Params.price }}"
+        data-currency="{{ .Params.currency }}">
+        🛒 Add to Cart
+    </button>
+</div>

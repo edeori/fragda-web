@@ -68,12 +68,14 @@ async function renderCartSummary() {
   if (!container) return;
 
   const template = await fetchCartItemTemplate();
+  const sizeLabel = item.size ? `Size: ${item.size}` : "";
   container.innerHTML = "";
 
   cart.forEach((item, index) => {
     const html = template
       .replace(/{{image}}/g, item.image)
       .replace(/{{title}}/g, item.title)
+      .replace(/{{size}}/g, sizeLabel)
       .replace(/{{price}}/g, item.price)
       .replace(/{{currency}}/g, item.currency)
       .replace(/{{index}}/g, index);

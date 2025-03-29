@@ -1,0 +1,81 @@
+/* 🛍 Product Card */
+.product-card {
+  background: #222;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 280px;
+  height: 100%;
+  min-height: 400px;
+  text-align: left;
+  color: white;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.product-card:hover {
+  box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+/* 📸 Product Image */
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover; /* 👉 zoomolás-szerű, kivágós hatás */
+  border-radius: 8px;
+  background: black; /* fehér helyett legyen inkább fekete háttér, ha szükséges */
+}
+
+/* 🏷 Title and Price */
+.product-title {
+  font-size: 1.1rem;
+  margin: 8px 0 4px;
+  font-weight: bold;
+}
+
+.product-price {
+  font-weight: bold;
+  color: #ffcc00;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+/* 🔽 Size Label & Select */
+.product-label {
+  margin-top: 8px;
+  margin-bottom: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.product-size {
+  padding: 6px 8px;
+  width: 100%;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  border: 1px solid #444;
+  background: #333;
+  color: white;
+  margin-bottom: 10px;
+}
+
+/* 🛒 Add to Cart Button */
+.add-to-cart {
+  background: #ffcc00;
+  color: black;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.95rem;
+  border-radius: 5px;
+  transition: background 0.3s ease-in-out;
+}
+
+.add-to-cart:hover {
+  background: #e6b800;
+  color: white;
+}
