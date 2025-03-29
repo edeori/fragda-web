@@ -64,6 +64,8 @@ Known for awesome live performances 🎤🔥
 <link rel="stylesheet" href=/css/custom.css>
 <link rel="stylesheet" href=/css/header.css>
 <link rel="stylesheet" href=/css/form.css>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
   </head><body class="ma0 avenir bg-near-white development">
 
     
@@ -118,7 +120,7 @@ Known for awesome live performances 🎤🔥
   </div>
 
   
-  <div id="mobile-menu" class="mobile-menu hidden">
+  <div id="mobile-menu" class="mobile-menu">
     
     <ul>
       
@@ -151,7 +153,7 @@ Known for awesome live performances 🎤🔥
   function toggleMobileMenu() {
     const menu = document.getElementById("mobile-menu");
     if (menu) {
-      menu.classList.toggle("hidden");
+      menu.classList.toggle("show");
     }
   }
 </script>
