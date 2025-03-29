@@ -146,7 +146,7 @@ Best regards,
 Fragda Shop Team
 `.trim();
 
-    const mailOptions = {
+    const mailOptionsCustomer = {
       from: `"Fragda Shop" <${process.env.EMAIL_USER}>`,
       to: order.customerEmail,
       subject: `Your Fragda Shop Order #${orderId} Confirmation`,
@@ -154,9 +154,20 @@ Fragda Shop Team
       html: emailBodyHTML,
     };
 
-    console.log("📨 Sending email...");
-    await transporter.sendMail(mailOptions);
-    console.log("✅ Email Sent Successfully!");
+    const mailOptionsOwner = {
+      from: `"Fragda Shop" <${process.env.EMAIL_USER}>`,
+      to: process.env.EMAIL_USER, // saját e-mail
+      subject: `New Order Received – #${orderId}`,
+      text: emailBodyText,
+      html: emailBodyHTML,
+    };
+
+    console.log("📨 Sending emails to customer and owner...");
+    await Promise.all([
+      transporter.sendMail(mailOptionsCustomer),
+      transporter.sendMail(mailOptionsOwner),
+    ]);
+    console.log("✅ Both emails sent successfully!");
 
     return {
       statusCode: 200,
