@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+const { randomUUID } = require("crypto");
 
 exports.handler = async function (event) {
   try {

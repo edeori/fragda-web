@@ -40,6 +40,9 @@ async function handleOrderSubmit(event) {
   }
 
   // Email küldés
+  const loader = document.getElementById("loading-indicator");
+  if (loader) loader.classList.remove("hidden");
+
   fetch("/.netlify/functions/send-order-email", {
     method: "POST",
     body: JSON.stringify(pendingOrder),
@@ -53,6 +56,9 @@ async function handleOrderSubmit(event) {
     })
     .catch(() => {
       alert("Error sending order email. Please contact support.");
+    })
+    .finally(() => {
+      if (loader) loader.classList.add("hidden");
     });
 }
 
