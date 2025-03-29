@@ -67,3 +67,8 @@
     min-height: 120px;
     overflow-y: auto;
 }
+
+.hidden {
+    display: none;
+  }
+  

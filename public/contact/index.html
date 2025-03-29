@@ -44,11 +44,10 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Contact">
 
-	<link rel="stylesheet" href="/css/news.css">
-<link rel="stylesheet" href="/css/custom.css">
-<link rel="stylesheet" href="/css/header.css">
-<link rel="stylesheet" href="/css/bio.css">
-
+	<link rel="stylesheet" href=/css/news.css>
+<link rel="stylesheet" href=/css/custom.css>
+<link rel="stylesheet" href=/css/header.css>
+<link rel="stylesheet" href=/css/bio.css>
   </head><body class="ma0 avenir bg-near-white development">
 
     
@@ -140,7 +139,7 @@
 
     <main class="pb7" role="main">
       
-<link rel="stylesheet" href="/css/contact.css">
+<link rel="stylesheet" href=/css/contact.css>
 <section class="contact-page">
     <h1>📩 Get in Touch</h1>
 
@@ -148,7 +147,9 @@
     <p class="contact-email"><a href="mailto:fragda.official@gmail.com"><strong>fragda.official@gmail.com</strong></a></p>
 
     
-    <form name="contact" method="POST" data-netlify="true" class="contact-form">
+    <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="contact-form">
+        <input type="hidden" name="form-name" value="contact">
+
         <label for="name">Name</label>
         <input type="text" id="name" name="name" placeholder="Your Name" required>
 
@@ -173,6 +174,10 @@
         <textarea id="message" name="message" placeholder="Your Message" required></textarea>
 
         <button type="submit">Send Message</button>
+        <p class="hidden">
+            <label>Don’t fill this out: <input name="bot-field" /></label>
+        </p>
+
     </form>
 </section>
 
