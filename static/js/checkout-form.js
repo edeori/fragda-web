@@ -27,6 +27,8 @@ async function handleOrderSubmit(event) {
   pendingOrder.shippingMethod = formData.get("shippingMethod");
   pendingOrder.paymentMethod = formData.get("paymentMethod");
   pendingOrder.orderNotes = formData.get("orderNotes");
+  pendingOrder.currency =
+    (pendingOrder.cart && pendingOrder.cart[0]?.currency) || "EUR";
 
   if (["post", "courier", "other"].includes(pendingOrder.shippingMethod)) {
     pendingOrder.shippingAddress = {

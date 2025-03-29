@@ -25,7 +25,7 @@ exports.handler = async function (event) {
       },
     });
 
-    const orderId = order.id || Math.floor(Math.random() * 1000000);
+    const orderId = order.id || randomUUID();
 
     const shipping = order.shippingAddress || {};
 
