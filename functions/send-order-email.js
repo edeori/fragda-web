@@ -14,6 +14,17 @@ exports.handler = async function (event) {
       throw new Error("❌ Missing SMTP credentials");
     }
 
+    // SMTP konfiguráció
+    let transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
+
     const orderId = order.id || Math.floor(Math.random() * 1000000);
 
     const shipping = order.shippingAddress || {};
