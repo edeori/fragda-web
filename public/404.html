@@ -101,7 +101,7 @@
   </div>
 
   
-  <div id="mobile-menu" class="mobile-menu hidden">
+  <div id="mobile-menu" class="mobile-menu">
     
     <ul>
       
@@ -129,6 +129,15 @@
     
   </div>
 </nav>
+
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById("mobile-menu");
+    if (menu) {
+      menu.classList.toggle("show");
+    }
+  }
+</script>
     </div>
   </header>
 

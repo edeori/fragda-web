@@ -30,7 +30,7 @@
   </div>
 
   <!-- Mobile Menu (Hidden by Default) -->
-  <div id="mobile-menu" class="mobile-menu hidden">
+  <div id="mobile-menu" class="mobile-menu">
     {{ if .Site.Menus.main }}
     <ul>
       {{ range .Site.Menus.main }}
@@ -42,3 +42,12 @@
     {{ end }}
   </div>
 </nav>
+
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById("mobile-menu");
+    if (menu) {
+      menu.classList.toggle("show");
+    }
+  }
+</script>
