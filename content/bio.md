@@ -3,8 +3,6 @@ title: About Fragda
 layout: bio
 type: page
 ---
-# Fragda – Band Biography
-
 **Fragda** is a **Budapest, Hungary-based** band that blends the extremity of modern death metal, the precision of deathcore, and the atmosphere of black metal into a distinct, oppressive sound. Their music is defined by fractured rhythms, tremolo-picked dissonance, and orchestral, cinematic arrangements — often described by critics as a unique form of *blackcore*.
 
 ![](/images/uploads/2v9a6639-enhanced-nr.jpg)
