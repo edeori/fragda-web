@@ -1,16 +1,24 @@
 ---
-title: "About Fragda"
-layout: "bio"
-type: "page"
+title: About Fragda
+layout: bio
+type: page
 ---
-## Welcome to Fragda Official Bio!
+# Fragda – Band Biography
 
-This is where you can add text about **Fragda**, formatted with Markdown.
+**Fragda** is a **Budapest, Hungary-based** band that blends the extremity of modern death metal, the precision of deathcore, and the atmosphere of black metal into a distinct, oppressive sound. Their music is defined by fractured rhythms, tremolo-picked dissonance, and orchestral, cinematic arrangements — often described by critics as a unique form of *blackcore*.
 
-### 🎸 Band History
-- Started in **Year X**
-- Released albums such as _Album Name 1_, _Album Name 2_
-- Known for **awesome live performances** 🎤🔥
+![](/images/uploads/2v9a6639-enhanced-nr.jpg)
 
-### 📸 Image Section
-![Bio Image](/images/uploads/29000026.jpg)
+Custom-built seven-string baritone guitars in drop E tuning form the backbone of their sonic identity. Whammy-driven pitch shifts and dense, layered guitar tracks create a massive, overwhelming *wall of sound* that has become their hallmark.
+
+The band’s lyrical themes are steeped in **Eastern European witchcraft**, folklore, and occult mysticism, forging a mythic persona as the *Eastern European lords of witchcraft*. Their visual and thematic universe reinforces this haunting, symbolic aesthetic.
+
+Fragda’s members hail from respected acts in the Hungarian underground, bringing both experience and raw creative energy to their collective vision.
+
+## Line-up
+
+* **Knapp Oszkár** – vocals  
+* **Ferenczi ‘Moth’ Márton** – guitar  
+* **Fejér Tamás** – guitar  
+* **Vincze Tamás** – guitar  
+* **Halász Illés Árpád** – drums
