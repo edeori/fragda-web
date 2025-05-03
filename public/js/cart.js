@@ -1,7 +1,11 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", initCartUI);
+window.addEventListener("pageshow", initCartUI);
+
+function initCartUI() {
   setupCartEvents();
   loadCartSidebar();
-});
+  updateCartCount();
+}
 
 // ===============================
 // 🛒 CART FUNCTIONALITY
@@ -106,6 +110,12 @@ function addToCart(event) {
   cart.push(cartItem);
   saveCart(cart);
 
+  console.log("cart animation");
+  const cartToggle = document.getElementById("cart-toggle");
+  cartToggle.classList.add("cart-flash");
+  setTimeout(() => cartToggle.classList.remove("cart-flash"), 500);
+
+  updateCartCount();
   loadCartSidebar();
   openCart();
 }
@@ -118,6 +128,7 @@ function removeFromCart(event) {
   cart.splice(index, 1);
   saveCart(cart);
 
+  updateCartCount();
   loadCartSidebar();
 }
 
@@ -141,7 +152,9 @@ function saveCart(cart) {
 }
 
 function openCart() {
-  document.getElementById("cart-sidebar").classList.add("cart-visible");
+  if (window.innerWidth > 768) {
+    document.getElementById("cart-sidebar").classList.add("cart-visible");
+  }
 }
 
 function calculateTotal() {
@@ -154,14 +167,14 @@ function calculateTotal() {
 // 💳 CHECKOUT
 // ===============================
 
-function validateEmail() {
-  const emailInput = document.querySelector(".customer-email");
-  const checkoutBtn = document.getElementById("checkout-btn");
-  const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value);
+// function validateEmail() {
+//   const emailInput = document.querySelector(".customer-email");
+//   const checkoutBtn = document.getElementById("checkout-btn");
+//   const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value);
 
-  // checkoutBtn.disabled = !isValid;
-  // checkoutBtn.classList.toggle("enabled", isValid);
-}
+//   checkoutBtn.disabled = !isValid;
+//   checkoutBtn.classList.toggle("enabled", isValid);
+// }
 
 function enableCheckoutButton() {
   const checkoutBtn = document.getElementById("checkout-btn");
@@ -202,4 +215,14 @@ function processCheckout() {
 
   // Átirányítás új oldalra
   window.location.href = "/checkout.html";
+}
+
+function updateCartCount() {
+  const count = getCart().length;
+  const badge = document.getElementById("cart-count");
+
+  if (badge) {
+    badge.textContent = count;
+    badge.style.display = count > 0 ? "inline-block" : "none";
+  }
 }

@@ -17,3 +17,8 @@ hugo server -D --disableFastRender
 npx serve public
 
 netlify dev
+
+****************************
+*     Hot Reload + Run     *
+****************************
+npm run dev

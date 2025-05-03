@@ -1,5 +1,16 @@
 {
   "dependencies": {
     "nodemailer": "^6.10.0"
+  },
+  "devDependencies": {
+    "chokidar-cli": "^3.0.0",
+    "npm-run-all": "^4.1.5",
+    "serve": "^14.2.4"
+  },
+  "scripts": {
+    "build": "hugo --gc --minify",
+    "watch": "chokidar \"content/**/*\" \"layouts/**/*\" \"static/**/*\" \"assets/**/*\" \"css/**/*\" -c \"npm run build\"",
+    "serve": "serve public -p 3000",
+    "dev": "npm-run-all --parallel watch serve"
   }
 }

@@ -21,9 +21,3 @@
 
 [functions]
   directory = "functions"
-
-[dev]
-  command = "hugo server -D"
-  targetPort = 1313
-  port = 8888
-  framework = "#custom"

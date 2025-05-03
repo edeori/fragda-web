@@ -1,4 +1,7 @@
-document.addEventListener("DOMContentLoaded", async function () {
+window.addEventListener("DOMContentLoaded", initCheckoutUI);
+window.addEventListener("pageshow", initCheckoutUI);
+
+async function initCheckoutUI() {
   const shippingSelect = document.getElementById("shipping-method");
   const addressSection = document.getElementById("shipping-address");
   const orderForm = document.getElementById("order-form");
@@ -12,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   if (orderForm) {
     orderForm.addEventListener("submit", handleOrderSubmit);
   }
-});
+}
 
 async function handleOrderSubmit(event) {
   event.preventDefault();
@@ -92,6 +95,10 @@ async function renderCartSummary() {
   totalEl.className = "cart-total-line";
   totalEl.textContent = `Total: ${total.toFixed(2)} ${currency}`;
   container.appendChild(totalEl);
+
+  container.querySelectorAll(".cart-delete").forEach((btn) => {
+    btn.addEventListener("click", removeFromCartCheckout);
+  });
 }
 
 function populateEmailFromOrder() {
@@ -124,4 +131,23 @@ function toggleShippingAddress() {
   addressSection.querySelectorAll("input").forEach((input) => {
     input.required = show;
   });
+}
+
+function removeFromCartCheckout(event) {
+  const index = parseInt(event.currentTarget.getAttribute("data-index"), 10);
+
+  // Frissítjük a pendingOrder.cart-ot
+  const pendingOrder = JSON.parse(localStorage.getItem("pendingOrder")) || {};
+  let cart = pendingOrder.cart || [];
+
+  cart.splice(index, 1);
+  pendingOrder.cart = cart;
+
+  localStorage.setItem("pendingOrder", JSON.stringify(pendingOrder));
+
+  // 🔁 Frissítjük a fő kosarat is!
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  // újrarendereljük a listát
+  renderCartSummary();
 }
