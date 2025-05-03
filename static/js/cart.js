@@ -55,9 +55,11 @@ async function loadCartSidebar() {
     cartList.appendChild(itemEl);
   }
 
+  const currency = cart.length > 0 ? cart[0].currency : "";
+
   document.getElementById(
     "cart-total"
-  ).textContent = `Total: ${calculateTotal()} EUR`;
+  ).textContent = `Total: ${calculateTotal()} ${currency}`;
 
   enableCheckoutButton();
 }
