@@ -10,7 +10,9 @@ npx netlify-cms-proxy-server
 hugo server -D
 hugo server -D --disableFastRender
 
-local run like on server
+****************************
+* local run like on server *
+****************************
 
 npx serve public
 

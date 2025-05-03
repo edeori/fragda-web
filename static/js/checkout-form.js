@@ -87,9 +87,10 @@ async function renderCartSummary() {
   });
 
   const total = cart.reduce((sum, item) => sum + parseFloat(item.price), 0);
+  const currency = cart.length > 0 ? cart[0].currency : "";
   const totalEl = document.createElement("div");
   totalEl.className = "cart-total-line";
-  totalEl.textContent = `Total: €${total.toFixed(2)}`;
+  totalEl.textContent = `Total: ${total.toFixed(2)} ${currency}`;
   container.appendChild(totalEl);
 }
 

@@ -11,7 +11,7 @@ function setupCartEvents() {
   const cartToggle = document.getElementById("cart-toggle");
   const cartSidebar = document.getElementById("cart-sidebar");
   const checkoutBtn = document.getElementById("checkout-btn");
-  const emailInput = document.querySelector(".customer-email");
+  // const emailInput = document.querySelector(".customer-email");
 
   if (cartToggle && cartSidebar) {
     cartToggle.addEventListener("click", function (event) {
@@ -27,8 +27,9 @@ function setupCartEvents() {
   //     }
   //   });
 
-  if (checkoutBtn && emailInput) {
-    emailInput.addEventListener("input", validateEmail);
+  // if (checkoutBtn && emailInput) {
+  if (checkoutBtn) {
+    // emailInput.addEventListener("input", validateEmail);
     checkoutBtn.addEventListener("click", processCheckout);
   }
 
@@ -54,6 +55,8 @@ async function loadCartSidebar() {
   document.getElementById(
     "cart-total"
   ).textContent = `Total: ${calculateTotal()} EUR`;
+
+  enableCheckoutButton();
 }
 
 async function renderCartItem(item, index) {
@@ -156,23 +159,35 @@ function validateEmail() {
   const checkoutBtn = document.getElementById("checkout-btn");
   const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value);
 
-  checkoutBtn.disabled = !isValid;
-  checkoutBtn.classList.toggle("enabled", isValid);
+  // checkoutBtn.disabled = !isValid;
+  // checkoutBtn.classList.toggle("enabled", isValid);
+}
+
+function enableCheckoutButton() {
+  const checkoutBtn = document.getElementById("checkout-btn");
+  const cart = getCart();
+
+  const isEnabled = cart.length > 0;
+
+  if (checkoutBtn) {
+    checkoutBtn.disabled = !isEnabled;
+    checkoutBtn.classList.toggle("enabled", isEnabled);
+  }
 }
 
 function processCheckout() {
   const cart = getCart();
-  const customerEmail = document.querySelector(".customer-email").value.trim();
+  // const customerEmail = document.querySelector(".customer-email").value.trim();
 
   if (cart.length === 0) {
     alert("A kosár üres!");
     return;
   }
 
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customerEmail)) {
-    alert("Adj meg egy érvényes email címet.");
-    return;
-  }
+  // if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customerEmail)) {
+  //   alert("Adj meg egy érvényes email címet.");
+  //   return;
+  // }
 
   const totalAmount = calculateTotal();
 
@@ -180,7 +195,7 @@ function processCheckout() {
     "pendingOrder",
     JSON.stringify({
       cart,
-      customerEmail,
+      // customerEmail,
       totalAmount,
     })
   );
