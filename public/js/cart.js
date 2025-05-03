@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", initCartUI);
-window.addEventListener("pageshow", initCartUI);
 
 function initCartUI() {
   setupCartEvents();

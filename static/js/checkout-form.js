@@ -1,5 +1,4 @@
 window.addEventListener("DOMContentLoaded", initCheckoutUI);
-window.addEventListener("pageshow", initCheckoutUI);
 
 async function initCheckoutUI() {
   const shippingSelect = document.getElementById("shipping-method");
@@ -112,7 +111,7 @@ function populateEmailFromOrder() {
 }
 
 async function fetchCartItemTemplate() {
-  const response = await fetch("/cart-item.html");
+  const response = await fetch("/checkout-item.html");
   return await response.text();
 }
 
