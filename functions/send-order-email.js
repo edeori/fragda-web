@@ -160,28 +160,18 @@ Best regards,
 Fragda Shop Team
 `.trim();
 
-    const mailOptionsCustomer = {
+    const mailOptions = {
       from: `"Fragda Shop" <${process.env.EMAIL_USER}>`,
       to: order.customerEmail,
+      bcc: process.env.EMAIL_USER,
       subject: `Your Fragda Shop Order #${orderId} Confirmation`,
       text: emailBodyText,
       html: emailBodyHTML,
     };
 
-    const mailOptionsOwner = {
-      from: `"Fragda Shop" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_USER, // saját e-mail
-      subject: `New Order Received – #${orderId}`,
-      text: emailBodyText,
-      html: emailBodyHTML,
-    };
-
-    console.log("📨 Sending emails to customer and owner...");
-    await Promise.all([
-      transporter.sendMail(mailOptionsCustomer),
-      transporter.sendMail(mailOptionsOwner),
-    ]);
-    console.log("✅ Both emails sent successfully!");
+    console.log("📨 Sending single email to customer with BCC to owner...");
+    await transporter.sendMail(mailOptions);
+    console.log("✅ Email sent to customer and copied to owner!");
 
     return {
       statusCode: 200,
