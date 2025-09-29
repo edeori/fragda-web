@@ -1,0 +1,59 @@
+{{- $caption := .Get "caption" | default "Gallery" -}}
+{{- $imgs := .Page.Resources.Match "images/*" -}}
+{{- if not (len $imgs) -}}
+<p><em>Nincsenek képek a <code>content/epk/images</code> mappában.</em></p>
+{{- else -}}
+<div class="fragda-gallery">
+  <div class="fg-header">
+    <h3>{{ $caption }}</h3>
+    <div class="fg-controls">
+      <button class="fg-prev" aria-label="Previous">‹</button>
+      <span class="fg-count"><span class="fg-idx">1</span> / {{ len $imgs }}</span>
+      <button class="fg-next" aria-label="Next">›</button>
+    </div>
+  </div>
+
+  <div class="fg-viewport">
+    {{- range $i, $img := $imgs -}}
+      {{- $res := $img.Fit "1600x1200 webp" -}}
+      <figure class="fg-slide{{ if eq $i 0 }} is-active{{ end }}">
+        <img
+          src="{{ $res.RelPermalink }}"
+          width="{{ $res.Width }}" height="{{ $res.Height }}"
+          alt="{{ with $img.Exif }}{{ .Tags.ImageDescription | default "Fragda press photo" }}{{ else }}Fragda press photo{{ end }}">
+      </figure>
+    {{- end -}}
+  </div>
+</div>
+{{- end -}}
+
+<script>
+(function(){
+  const root = document.currentScript.previousElementSibling;
+  if(!root || !root.classList.contains('fragda-gallery')) return;
+  const slides = root.querySelectorAll('.fg-slide');
+  const idxEl = root.querySelector('.fg-idx');
+  let i = 0;
+  function show(n){
+    i = (n + slides.length) % slides.length;
+    slides.forEach((s, k)=> s.classList.toggle('is-active', k===i));
+    idxEl.textContent = (i+1);
+  }
+  root.querySelector('.fg-prev').addEventListener('click', ()=>show(i-1));
+  root.querySelector('.fg-next').addEventListener('click', ()=>show(i+1));
+})();
+</script>
+
+<style>
+.fragda-gallery{margin:1.5rem 0}
+.fragda-gallery .fg-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem}
+.fragda-gallery .fg-controls{display:flex;gap:.5rem;align-items:center;font:inherit}
+.fragda-gallery button{border:1px solid #444;background:#111;color:#eee;padding:.2rem .6rem;cursor:pointer}
+.fragda-gallery .fg-viewport{position:relative;overflow:hidden;border-radius:12px;background:#000}
+.fragda-gallery .fg-slide{display:none;margin:0}
+.fragda-gallery .fg-slide.is-active{display:block}
+.fragda-gallery img{display:block;width:100%;height:auto}
+@media (prefers-color-scheme: light){
+  .fragda-gallery button{background:#fff;color:#111;border-color:#bbb}
+}
+</style>

@@ -1,0 +1,6 @@
+{{- $id := .Get "id" -}}
+{{- $title := .Get "title" -}}
+{{- $start := .Get "start" -}}
+{{- if not $id -}}<p style="color:#f55">yt: hiányzik az <code>id</code></p>{{- else -}}
+  {{- partial "yt-embed.html" (dict "id" $id "title" $title "start" $start "Page" .Page) -}}
+{{- end -}}

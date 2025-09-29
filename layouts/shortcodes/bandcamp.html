@@ -1,0 +1,43 @@
+{{- /* Kötelező: id; Opcionális: type=album|track, bgcol, linkcol */ -}}
+{{- $type := .Get "type" | default "album" -}}
+{{- $id := .Get "id" -}}
+{{- $bgcol := .Get "bgcol" | default "111111" -}}
+{{- $linkcol := .Get "linkcol" | default "ffffff" -}}
+{{- if not $id -}}
+  <p style="color:#f55">bandcamp shortcode: hiányzik az <code>id</code>.</p>
+{{- else -}}
+  {{- /* nagy embed (desktop/tablet) */ -}}
+  {{- $srcLarge := (printf "https://bandcamp.com/EmbeddedPlayer/%s=%s/size=large/bgcol=%s/linkcol=%s/tracklist=true/transparent=true/" $type $id $bgcol $linkcol) -}}
+  {{- /* kompakt embed (mobil) – kisebb artwork, nincs tracklist */ -}}
+  {{- $srcSmall := (printf "https://bandcamp.com/EmbeddedPlayer/%s=%s/size=small/bgcol=%s/linkcol=%s/tracklist=false/transparent=true/" $type $id $bgcol $linkcol) -}}
+  {{- if eq $type "track" -}}
+    {{- $srcSmall = (printf "%sartwork=small/" $srcSmall) -}}
+  {{- end -}}
+
+  <div class="bc-wrap">
+    <iframe class="bc-iframe bc-desktop"
+            title="Bandcamp player"
+            loading="lazy" allow="autoplay"
+            src="{{ $srcLarge }}"></iframe>
+    <iframe class="bc-iframe bc-mobile"
+            title="Bandcamp player (mobile)"
+            loading="lazy" allow="autoplay"
+            src="{{ $srcSmall }}"></iframe>
+  </div>
+
+  <style>
+    .bc-wrap{ margin: 1rem 0; }
+    .bc-iframe{ border:0; display:block; width:100%; }
+    /* Fix magasságok a Bandcamp makettekhez */
+    .bc-desktop{ height: 680px; }   /* album large + tracklist: ~650–700px */
+    .bc-mobile{ height: 120px; }    /* small player: ~120px */
+    /* Csak az egyiket mutassuk a szélesség alapján */
+    .bc-mobile{ display:none; }
+    @media (max-width: 640px){
+      .bc-desktop{ display:none; }
+      .bc-mobile{ display:block; }
+    }
+    /* Biztonsági öv: ha a szülő grid/card overflow-ozna, ne vágja le az iframe-et */
+    .bc-wrap{ overflow:visible; }
+  </style>
+{{- end -}}

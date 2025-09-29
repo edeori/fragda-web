@@ -1,0 +1,63 @@
+{{- /* Params:
+  pattern:    hol keresse a képeket a page bundle-ben (default: "endorsements/*")
+  height:     logók cél magassága px-ben (default: 56)
+  gap:        távolság px (default: 16)
+  links:      vesszővel elválasztott URL lista, azonos sorrendben mint a képek (opcionális)
+*/ -}}
+
+{{- $pattern := .Get "pattern" | default "endorsements/*" -}}
+{{- $h := .Get "height" | default "56" -}}
+{{- $gap := .Get "gap" | default "16" -}}
+
+{{- $urls := slice -}}
+{{- with .Get "links" -}}
+  {{- $parts := split . "," -}}
+  {{- range $parts -}}
+    {{- $urls = $urls | append (trim . " ") -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $imgs := .Page.Resources.Match $pattern -}}
+{{- if not (len $imgs) -}}
+  <p style="opacity:.7">No endorsement logos found at <code>{{ $pattern }}</code>.</p>
+{{- else -}}
+  <div class="endorse-strip" style="--h: {{ $h }}px; --gap: {{ $gap }}px;">
+    {{- range $i, $img := $imgs -}}
+      {{- $name := replaceRE "\\..*$" "" $img.Name -}}
+      {{- $alt := humanize (replace $name "-" " ") -}}
+      {{- $href := "" -}}
+      {{- if gt (len $urls) $i -}}{{- $href = index $urls $i -}}{{- end -}}
+      {{- if $href -}}<a class="endorse-item" href="{{ $href }}" target="_blank" rel="noopener" aria-label="{{ $alt }}">{{- else -}}<span class="endorse-item" role="img" aria-label="{{ $alt }}">{{- end -}}
+        <img loading="lazy" decoding="async" src="{{ $img.RelPermalink }}" alt="{{ $alt }}">
+      {{- if $href -}}</a>{{- else -}}</span>{{- end -}}
+    {{- end -}}
+  </div>
+
+  <style>
+    .endorse-strip{
+      display:flex; flex-wrap:wrap; gap:var(--gap);
+      align-items:center; justify-content:center;
+      margin: 1.5rem 0 0;
+    }
+    .endorse-item{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:.4rem .6rem; border-radius:12px;
+      background: rgba(126,94,34,.06); /* Fragda-gold finom háttér */
+      box-shadow: 0 1px 0 rgba(255,255,255,.03) inset, 0 2px 10px rgba(0,0,0,.25);
+      transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .endorse-item:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(0,0,0,.35), 0 0 0 1px rgba(126,94,34,.18) inset;
+      background: rgba(126,94,34,.10);
+    }
+    .endorse-item img{
+      display:block; height: var(--h); width:auto; object-fit: contain;
+      filter: grayscale(100%) contrast(1.05) opacity(.9);
+      transition: filter .2s ease, opacity .2s ease;
+    }
+    .endorse-item:hover img{
+      filter: none; opacity: 1;
+    }
+  </style>
+{{- end -}}

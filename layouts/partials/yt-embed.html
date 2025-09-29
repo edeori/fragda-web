@@ -1,0 +1,37 @@
+{{- $id := .id -}}
+{{- $title := .title | default "YouTube video" -}}
+{{- $start := .start -}}
+
+{{/* inject CSS/JS only once per page */}}
+{{- if not (.Page.Scratch.Get "yt-embed-injected") -}}
+  {{- .Page.Scratch.Set "yt-embed-injected" true -}}
+  <style>
+    .yt-wrap{position:relative;aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden}
+    .yt-thumb{all:unset;cursor:pointer;display:block;width:100%;height:100%;position:relative}
+    .yt-thumb img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.9)}
+    .yt-play{position:absolute;inset:auto auto 12px 12px;background:#e00;color:#fff;
+             padding:.4rem .6rem;border-radius:8px;font-weight:700}
+    .yt-iframe{position:absolute;inset:0;border:0;width:100%;height:100%}
+  </style>
+  <script>
+    (function(w){
+      w.__ytLazyInit = function(el){
+        var id = el.dataset.id, s = el.dataset.start || "";
+        var src = "https://www.youtube-nocookie.com/embed/"+id+"?autoplay=1&modestbranding=1&rel=0&playsinline=1"+(s?("&start="+s):"");
+        var ifr = document.createElement("iframe");
+        ifr.className="yt-iframe";
+        ifr.allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share";
+        ifr.allowFullscreen = true;
+        ifr.src = src;
+        el.innerHTML=""; el.appendChild(ifr);
+      };
+    })(window);
+  </script>
+{{- end -}}
+
+<div class="yt-wrap" data-id="{{ $id }}" {{ with $start }}data-start="{{ . }}"{{ end }}>
+  <button class="yt-thumb" aria-label="Play {{ $title }}" onclick="__ytLazyInit(this.parentElement)">
+    <img loading="lazy" src="https://i.ytimg.com/vi/{{ $id }}/hqdefault.jpg" alt="{{ $title }}">
+    <span class="yt-play">▶</span>
+  </button>
+</div>

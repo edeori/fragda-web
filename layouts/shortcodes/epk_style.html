@@ -1,0 +1,36 @@
+<style>
+  :root{
+    --fragda-gold-500:#7e5e22;
+    --fragda-gold-600:#654b1b;
+    --fragda-gold-700:#523d16;
+    --fragda-gold-400:#9e8659;
+    --fg:#e7e3da; /* tört fehér – nem vakít */
+    --bg:#0d0d0d;
+  }
+
+  /* háttér a teljes oldalnak ha van epk-page a body-n */
+  .epk-page{ background:var(--bg); }
+
+  /* Ananke wrapper kényszerített felülírása */
+  .nested-copy-line-height{ color:var(--fg) !important; }
+  .nested-copy-line-height h1,
+  .nested-copy-line-height h2,
+  .nested-copy-line-height h3,
+  .nested-copy-line-height h4{ color:var(--fg) !important; }
+  .nested-copy-line-height a{
+    color:var(--fg) !important;
+    text-decoration:none;
+    border-bottom:1px solid var(--fragda-gold-600);
+  }
+  .nested-copy-line-height a:hover{
+    border-color:var(--fragda-gold-400);
+  }
+
+  /* keret/árnyalás a beágyazások körül */
+  .fragda-gallery .fg-viewport,
+  .bc-wrap, .bc-row .bc-col .bc-iframe,
+  .yt-wrap{
+    box-shadow: 0 0 0 1px rgba(126,94,34,.25);
+    border-radius:12px;
+  }
+</style>

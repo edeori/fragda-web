@@ -1,0 +1,40 @@
+{{ define "main" }}
+<article class="epk">
+  <header class="epk-head">
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.description }}<p class="lead">{{ . }}</p>{{ end }}
+  </header>
+
+  <section class="epk-bio">
+    {{ .Content }}
+  </section>
+
+  <section class="epk-meta">
+    {{ with .Site.Params.epk }}
+      {{ with .contacts }}
+        <h3>Contacts</h3>
+        <ul>
+          {{ range . }}<li>{{ . }}</li>{{ end }}
+        </ul>
+      {{ end }}
+    {{ end }}
+  </section>
+</article>
+{{ end }}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicGroup",
+  "name": "Fragda",
+  "genre": ["Blackened deathcore","Blackcore","Extreme metal"],
+  "url": "{{ .Permalink }}",
+  "image": "{{ (resources.GetMatch "images/*").RelPermalink | default "/images/uploads/fragda-logo.png" }}",
+  "foundingLocation": "Budapest, Hungary",
+  "sameAs": [
+    "https://fragda.bandcamp.com",
+    "https://www.youtube.com/@fragda",
+    "https://instagram.com/fragda"
+  ]
+}
+</script>

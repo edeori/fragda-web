@@ -1,0 +1,81 @@
+{{- /* Props:
+  left_id (kötelező), left_type=album|track (default: album)
+  right_id (kötelező), right_type=album|track (default: album)
+  bgcol, linkcol (mindkettőre)
+  desktop_height_left, desktop_height_right (px, opcionális)
+  mobile_height (px, default: 120)
+  tracklist_left=true|false (albumoknál)
+  tracklist_right=true|false
+*/ -}}
+
+{{- $leftID := .Get "left_id" -}}
+{{- $rightID := .Get "right_id" -}}
+{{- if or (not $leftID) (not $rightID) -}}
+  <p style="color:#f55">bandcamp_pair shortcode: hiányzik a <code>left_id</code> vagy <code>right_id</code>.</p>
+{{- else -}}
+
+{{- $leftType := .Get "left_type" | default "album" -}}
+{{- $rightType := .Get "right_type" | default "album" -}}
+{{- $bg := .Get "bgcol" | default "111111" -}}
+{{- $link := .Get "linkcol" | default "ffffff" -}}
+{{- $tlLeft := .Get "tracklist_left" | default "true" -}}
+{{- $tlRight := .Get "tracklist_right" | default "true" -}}
+{{- $mH := .Get "mobile_height" | default "120" -}}
+
+{{/* Desktop magasságok – jó defaultok, felülírhatók paraméterrel */}}
+{{- $dHLeft := 680 -}}
+{{- if eq $leftType "track" -}} {{- $dHLeft = 340 -}} {{- end -}}
+{{- with .Get "desktop_height_left" -}} {{- $dHLeft = (int .) -}} {{- end -}}
+
+{{- $dHRight := 680 -}}
+{{- if eq $rightType "track" -}} {{- $dHRight = 340 -}} {{- end -}}
+{{- with .Get "desktop_height_right" -}} {{- $dHRight = (int .) -}} {{- end -}}
+
+{{- /* Src-k: desktop = large + (album: tracklist választható); mobile = small, tracklist false */ -}}
+{{- $srcL_desktop := (printf "https://bandcamp.com/EmbeddedPlayer/%s=%s/size=large/bgcol=%s/linkcol=%s/tracklist=%s/transparent=true/" $leftType $leftID $bg $link $tlLeft) -}}
+{{- $srcR_desktop := (printf "https://bandcamp.com/EmbeddedPlayer/%s=%s/size=large/bgcol=%s/linkcol=%s/tracklist=%s/transparent=true/" $rightType $rightID $bg $link $tlRight) -}}
+
+{{- $srcL_mobile := (printf "https://bandcamp.com/EmbeddedPlayer/%s=%s/size=small/bgcol=%s/linkcol=%s/tracklist=false/transparent=true/" $leftType $leftID $bg $link) -}}
+{{- $srcR_mobile := (printf "https://bandcamp.com/EmbeddedPlayer/%s=%s/size=small/bgcol=%s/linkcol=%s/tracklist=false/transparent=true/" $rightType $rightID $bg $link) -}}
+
+{{- if eq $leftType "track" -}}  {{- $srcL_mobile = (printf "%sartwork=small/" $srcL_mobile) -}} {{- end -}}
+{{- if eq $rightType "track" -}} {{- $srcR_mobile = (printf "%sartwork=small/" $srcR_mobile) -}} {{- end -}}
+
+<div class="bc-row">
+  <div class="bc-col">
+    <iframe class="bc-iframe bc-desktop" title="Bandcamp left (desktop)"
+            loading="lazy" allow="autoplay"
+            style="height: {{ $dHLeft }}px;" src="{{ $srcL_desktop }}"></iframe>
+    <iframe class="bc-iframe bc-mobile" title="Bandcamp left (mobile)"
+            loading="lazy" allow="autoplay"
+            style="height: {{ $mH }}px;" src="{{ $srcL_mobile }}"></iframe>
+  </div>
+
+  <div class="bc-col">
+    <iframe class="bc-iframe bc-desktop" title="Bandcamp right (desktop)"
+            loading="lazy" allow="autoplay"
+            style="height: {{ $dHRight }}px;" src="{{ $srcR_desktop }}"></iframe>
+    <iframe class="bc-iframe bc-mobile" title="Bandcamp right (mobile)"
+            loading="lazy" allow="autoplay"
+            style="height: {{ $mH }}px;" src="{{ $srcR_mobile }}"></iframe>
+  </div>
+</div>
+
+<style>
+  .bc-row{
+    display:grid; gap:1rem; align-items:start; margin:1rem 0;
+    grid-template-columns: 1fr 1fr;
+  }
+  .bc-col{ min-width:0 }
+  .bc-iframe{ border:0; display:block; width:100% }
+  /* csak az egyik változat látszódjon eszközönként */
+  .bc-mobile{ display:none }
+  @media (max-width: 640px){
+    .bc-row{ grid-template-columns: 1fr }
+    .bc-desktop{ display:none }
+    .bc-mobile{ display:block }
+  }
+  /* Biztonság kedvéért kerüljük a levágást */
+  .bc-row, .bc-col{ overflow:visible }
+</style>
+{{- end -}}

@@ -1,0 +1,19 @@
+{{- $src := .Get "src" -}}
+{{- if not $src -}}
+  <p style="color:red">logo shortcode: hiányzik a <code>src</code> paraméter.</p>
+{{- else -}}
+  <div class="epk-logo">
+    <img src="{{ $src }}" alt="Fragda logo">
+  </div>
+  <style>
+    .epk-logo{
+      display:flex;
+      justify-content:center;
+      margin:2rem 0;
+    }
+    .epk-logo img{
+      max-width:300px; /* állítsd, hogy mekkora legyen max */
+      height:auto;
+    }
+  </style>
+{{- end -}}

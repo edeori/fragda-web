@@ -150,13 +150,32 @@ collections:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Body", name: "body", widget: "markdown" }
 
-  - name: "epk"
-    label: "EPK"
+  - name: "bio"
+    label: "Bio Page"
     delete: false # Prevent deletion
     files:
-      - label: "EPK"
-        name: "epk"
-        file: "content/epk.md"
+      - label: "Bio"
+        name: "bio"
+        file: "content/bio.md"
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "epk"
+    label: "EPK"
+    delete: false
+    files:
+      - label: "EPK"
+        name: "epk"
+        file: "content/epk/index.md"
+        media_folder: "content/epk/images"
+        public_folder: "/epk/images"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "string", required: false }
+          - { label: "Body", name: "body", widget: "markdown" }
+          - label: "OG Images"
+            name: "images"
+            widget: "list"
+            required: false
+            field: { label: "Image", name: "image", widget: "image" }

@@ -30,6 +30,13 @@
       <description>&lt;p&gt;On April 6, Fragda unveils &lt;em&gt;Glorification of Witchery&lt;/em&gt;, a full-length album that channels the ancient forces of Eastern European witchcraft through a bold fusion of black metal, modern death metal, and cinematic soundscapes. This is not just an album— it’s a ritual invocation, merging raw aggression with theatrical atmospheres and hypnotic intensity.&lt;/p&gt;</description>
     </item>
     <item>
+      <title></title>
+      <link>http://localhost:1313/epk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/epk/</guid>
+      <description>&lt;style&gt;&#xD;&#xA;  :root{&#xD;&#xA;    --fragda-gold-500:#7e5e22;&#xD;&#xA;    --fragda-gold-600:#654b1b;&#xD;&#xA;    --fragda-gold-700:#523d16;&#xD;&#xA;    --fragda-gold-400:#9e8659;&#xD;&#xA;    --fg:#e7e3da;  &#xD;&#xA;    --bg:#0d0d0d;&#xD;&#xA;  }&#xD;&#xA;&#xD;&#xA;   &#xD;&#xA;  .epk-page{ background:var(--bg); }&#xD;&#xA;&#xD;&#xA;   &#xD;&#xA;  .nested-copy-line-height{ color:var(--fg) !important; }&#xD;&#xA;  .nested-copy-line-height h1,&#xD;&#xA;  .nested-copy-line-height h2,&#xD;&#xA;  .nested-copy-line-height h3,&#xD;&#xA;  .nested-copy-line-height h4{ color:var(--fg) !important; }&#xD;&#xA;  .nested-copy-line-height a{&#xD;&#xA;    color:var(--fg) !important;&#xD;&#xA;    text-decoration:none;&#xD;&#xA;    border-bottom:1px solid var(--fragda-gold-600);&#xD;&#xA;  }&#xD;&#xA;  .nested-copy-line-height a:hover{&#xD;&#xA;    border-color:var(--fragda-gold-400);&#xD;&#xA;  }&#xD;&#xA;&#xD;&#xA;   &#xD;&#xA;  .fragda-gallery .fg-viewport,&#xD;&#xA;  .bc-wrap, .bc-row .bc-col .bc-iframe,&#xD;&#xA;  .yt-wrap{&#xD;&#xA;    box-shadow: 0 0 0 1px rgba(126,94,34,.25);&#xD;&#xA;    border-radius:12px;&#xD;&#xA;  }&#xD;&#xA;&lt;/style&gt;&#xD;&#xA;&#xA;&lt;div class=&#34;epk-logo&#34;&gt;&#xD;&#xA;    &lt;img src=&#34;fragda-logo.png&#34; alt=&#34;Fragda logo&#34;&gt;&#xD;&#xA;  &lt;/div&gt;&#xD;&#xA;  &lt;style&gt;&#xD;&#xA;    .epk-logo{&#xD;&#xA;      display:flex;&#xD;&#xA;      justify-content:center;&#xD;&#xA;      margin:2rem 0;&#xD;&#xA;    }&#xD;&#xA;    .epk-logo img{&#xD;&#xA;      max-width:300px;  &#xD;&#xA;      height:auto;&#xD;&#xA;    }&#xD;&#xA;  &lt;/style&gt;&#xA;&lt;p&gt;&lt;strong&gt;Fragda&lt;/strong&gt; is a &lt;strong&gt;Budapest, Hungary&lt;/strong&gt;-based band that conjures a suffocating hybrid of modern death metal, precise deathcore mechanics, and the haunted aura of black metal. Marked by fractured rhythms and cinematic arrangements, their music embodies a mythic, occult-laden atmosphere — a soundscape that has been dubbed &lt;em&gt;blackcore&lt;/em&gt;, at once destructive and otherworldly.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>About Fragda</title>
       <link>http://localhost:1313/bio/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -42,13 +49,6 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/releases/damnation-is-inevitable/</guid>
       <description></description>
-    </item>
-    <item>
-      <title>EPK</title>
-      <link>http://localhost:1313/epk/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/epk/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Fragda&lt;/strong&gt; is a &lt;strong&gt;Budapest, Hungary-based&lt;/strong&gt; band that blends the extremity of modern death metal, the precision of deathcore, and the atmosphere of black metal into a distinct, oppressive sound. Their music is defined by fractured rhythms, tremolo-picked dissonance, and orchestral, cinematic arrangements — often described by critics as a unique form of &lt;em&gt;blackcore&lt;/em&gt;.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/uploads/2v9a6639-enhanced-nr.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Custom-built seven-string baritone guitars in drop E tuning form the backbone of their sonic identity. Whammy-driven pitch shifts and dense, layered guitar tracks create a massive, overwhelming &lt;em&gt;wall of sound&lt;/em&gt; that has become their hallmark.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Glorification of Witchery</title>

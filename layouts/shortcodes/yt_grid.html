@@ -1,0 +1,16 @@
+{{- $ids := .Get "ids" -}}
+{{- if not $ids -}}<p style="color:#f55">yt_grid: add meg az <code>ids</code> listát (vesszővel elválasztva)</p>{{- else -}}
+  {{- $arr := split $ids "," -}}
+  <div class="yt-grid">
+    {{- range $arr -}}
+      {{- $id := trim . " " -}}
+      {{- if $id -}}
+        {{- partial "yt-embed.html" (dict "id" $id "title" "" "start" "" "Page" $.Page) -}}
+      {{- end -}}
+    {{- end -}}
+  </div>
+  <style>
+    .yt-grid{display:grid;gap:1rem;grid-template-columns:1fr}
+    @media (min-width: 720px){ .yt-grid{grid-template-columns:1fr 1fr} }
+  </style>
+{{- end -}}

@@ -1,0 +1,33 @@
+{{- $href  := .Get "href" -}}
+{{- $label := .Get "label" | default "Download" -}}
+{{- $meta  := .Get "meta" -}}     {{/* pl. PNG/SVG, ZIP, PDF */}}
+{{- $size  := .Get "size" -}}     {{/* pl. ~8 MB (opcionális) */}}
+{{- $ext   := .Get "ext" -}}
+
+{{- /* Biztonságos kiterjesztés-kinyerés (query/hash lecsapás + utolsó pont utáni rész) */ -}}
+{{- if not $ext -}}
+  {{- $clean := replaceRE "[?#].*$" "" $href -}}
+  {{- $ext = lower (replaceRE "^.*\\." "" $clean) -}}
+{{- end -}}
+
+<a class="dl-card" href="{{ $href }}" {{ if ne $ext "pdf" }}download{{ end }} rel="noopener">
+  <span class="dl-icon">
+    {{- if or (eq $ext "zip") (eq $ext "rar") (eq $ext "7z") -}}
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm1 7V3.5L19.5 9H15zM8 7h5v2H8V7zm0 4h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>
+    {{- else if eq $ext "pdf" -}}
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 1 1 2-2zm8 1.5V9h5.5L14 3.5zM8 12h4a2 2 0 0 1 0 4H8v-4zm2 2h2a1 1 0 1 0 0-2h-2v2z"/></svg>
+    {{- else -}}
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v7h2V4h8V2zm4 6h-4V4l4 4zM4 20v-7h2v7h8v2H6a2 2 0 0 1-2-2zm15.293-6.707L17 15.586V10h-2v5.586l-2.293-2.293-1.414 1.414L14 19.414l4.707-4.707-1.414-1.414z"/></svg>
+    {{- end -}}
+  </span>
+  <span class="dl-text">
+    <strong>{{ $label }}</strong>
+    {{- if or $meta $size -}}
+      <em>
+        {{- with $meta -}}{{ . }}{{- end -}}
+        {{- if and $meta $size -}} · {{- end -}}
+        {{- with $size -}}{{ . }}{{- end -}}
+      </em>
+    {{- end -}}
+  </span>
+</a>
