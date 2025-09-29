@@ -57,3 +57,9 @@ theme = "ananke"
   name = "Contact"
   url = "/contact/"
   weight = 5
+
+[[menu.main]]
+  identifier = "epk"
+  name = "EPK"
+  url = "/epk/"
+  weight = 6

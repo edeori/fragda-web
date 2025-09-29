@@ -1,3 +1,82 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Fragda Official</title><link>https://fragda.hu/</link><description>Recent content on Fragda Official</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 02 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://fragda.hu/index.xml" rel="self" type="application/rss+xml"/><item><title>Glorification of Witchery album release</title><link>https://fragda.hu/posts/glorification-of-witchery-album-release/</link><pubDate>Wed, 02 Apr 2025 00:00:00 +0000</pubDate><guid>https://fragda.hu/posts/glorification-of-witchery-album-release/</guid><description>&lt;p>On April 6, Fragda unveils &lt;em>Glorification of Witchery&lt;/em>, a full-length album that channels the ancient forces of Eastern European witchcraft through a bold fusion of black metal, modern death metal, and cinematic soundscapes. This is not just an album— it’s a ritual invocation, merging raw aggression with theatrical atmospheres and hypnotic intensity.&lt;/p></description></item><item><title>About Fragda</title><link>https://fragda.hu/bio/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://fragda.hu/bio/</guid><description>&lt;p>&lt;strong>Fragda&lt;/strong> is a &lt;strong>Budapest, Hungary-based&lt;/strong> band that blends the extremity of modern death metal, the precision of deathcore, and the atmosphere of black metal into a distinct, oppressive sound. Their music is defined by fractured rhythms, tremolo-picked dissonance, and orchestral, cinematic arrangements — often described by critics as a unique form of &lt;em>blackcore&lt;/em>.&lt;/p>
-&lt;p>&lt;img src="https://fragda.hu/images/uploads/2v9a6639-enhanced-nr.jpg" alt="">&lt;/p>
-&lt;p>Custom-built seven-string baritone guitars in drop E tuning form the backbone of their sonic identity. Whammy-driven pitch shifts and dense, layered guitar tracks create a massive, overwhelming &lt;em>wall of sound&lt;/em> that has become their hallmark.&lt;/p></description></item><item><title>Damnation is Inevitable</title><link>https://fragda.hu/releases/damnation-is-inevitable/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://fragda.hu/releases/damnation-is-inevitable/</guid><description/></item><item><title>Glorification of Witchery</title><link>https://fragda.hu/releases/glorification-of-witchery/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://fragda.hu/releases/glorification-of-witchery/</guid><description/></item><item><title>Glorification of Witchery T-Shirt</title><link>https://fragda.hu/shop/glorification-of-witchery-t-shirt/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://fragda.hu/shop/glorification-of-witchery-t-shirt/</guid><description>&lt;p>Glorification of Witchery album cover t-shirt&lt;/p></description></item><item><title>Payment Settings</title><link>https://fragda.hu/config/payment/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://fragda.hu/config/payment/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fragda Official</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Fragda Official</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 03 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Production behind schedule</title>
+      <link>http://localhost:1313/posts/production-behind-schedule/</link>
+      <pubDate>Tue, 03 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/production-behind-schedule/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;🜏 Hey, everyone! 🜏&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;We got to inform you that the production of the physicals (digipack) and the T-shirts are a bit behind schedule.&lt;/p&gt;&#xA;&lt;p&gt;No &lt;a href=&#34;&#34;&gt;&lt;/a&gt;worries, it&amp;rsquo;s on the way and we will send them out as soon as we got them.&lt;/p&gt;&#xA;&lt;p&gt;Thanks for your patience!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The Glorification of Witchery merch presale has officially begun!</title>
+      <link>http://localhost:1313/posts/the-glorification-of-witchery-merch-presale-has-officially-begun/</link>
+      <pubDate>Sat, 03 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/the-glorification-of-witchery-merch-presale-has-officially-begun/</guid>
+      <description>&lt;p&gt;Secure your preorder now — shipments will commence on June 1, 2025.&lt;/p&gt;&#xA;&lt;p&gt;T-shirts are available in all sizes, and we&amp;rsquo;re also planning to release a special bundle including both the shirt and the CD at a later date — stay tuned!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Glorification of Witchery album release</title>
+      <link>http://localhost:1313/posts/glorification-of-witchery-album-release/</link>
+      <pubDate>Wed, 02 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/glorification-of-witchery-album-release/</guid>
+      <description>&lt;p&gt;On April 6, Fragda unveils &lt;em&gt;Glorification of Witchery&lt;/em&gt;, a full-length album that channels the ancient forces of Eastern European witchcraft through a bold fusion of black metal, modern death metal, and cinematic soundscapes. This is not just an album— it’s a ritual invocation, merging raw aggression with theatrical atmospheres and hypnotic intensity.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>About Fragda</title>
+      <link>http://localhost:1313/bio/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/bio/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Fragda&lt;/strong&gt; is a &lt;strong&gt;Budapest, Hungary-based&lt;/strong&gt; band that blends the extremity of modern death metal, the precision of deathcore, and the atmosphere of black metal into a distinct, oppressive sound. Their music is defined by fractured rhythms, tremolo-picked dissonance, and orchestral, cinematic arrangements — often described by critics as a unique form of &lt;em&gt;blackcore&lt;/em&gt;.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/uploads/2v9a6639-enhanced-nr.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Custom-built seven-string baritone guitars in drop E tuning form the backbone of their sonic identity. Whammy-driven pitch shifts and dense, layered guitar tracks create a massive, overwhelming &lt;em&gt;wall of sound&lt;/em&gt; that has become their hallmark.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Damnation is Inevitable</title>
+      <link>http://localhost:1313/releases/damnation-is-inevitable/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/releases/damnation-is-inevitable/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>EPK</title>
+      <link>http://localhost:1313/epk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/epk/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Fragda&lt;/strong&gt; is a &lt;strong&gt;Budapest, Hungary-based&lt;/strong&gt; band that blends the extremity of modern death metal, the precision of deathcore, and the atmosphere of black metal into a distinct, oppressive sound. Their music is defined by fractured rhythms, tremolo-picked dissonance, and orchestral, cinematic arrangements — often described by critics as a unique form of &lt;em&gt;blackcore&lt;/em&gt;.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/uploads/2v9a6639-enhanced-nr.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Custom-built seven-string baritone guitars in drop E tuning form the backbone of their sonic identity. Whammy-driven pitch shifts and dense, layered guitar tracks create a massive, overwhelming &lt;em&gt;wall of sound&lt;/em&gt; that has become their hallmark.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Glorification of Witchery</title>
+      <link>http://localhost:1313/releases/glorification-of-witchery/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/releases/glorification-of-witchery/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Glorification of Witchery CD</title>
+      <link>http://localhost:1313/shop/glorification-of-witchery-cd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/shop/glorification-of-witchery-cd/</guid>
+      <description>&lt;p&gt;G﻿lorification of Witchery Digipack CD&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Glorification of Witchery T-Shirt</title>
+      <link>http://localhost:1313/shop/glorification-of-witchery-t-shirt/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/shop/glorification-of-witchery-t-shirt/</guid>
+      <description>&lt;p&gt;Glorification of Witchery album cover t-shirt&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Payment Settings</title>
+      <link>http://localhost:1313/config/payment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/config/payment/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
