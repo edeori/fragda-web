@@ -149,3 +149,14 @@ collections:
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "epk"
+    label: "EPK"
+    delete: false # Prevent deletion
+    files:
+      - label: "EPK"
+        name: "epk"
+        file: "content/epk.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
