@@ -45,7 +45,7 @@ Lyrically and visually, the band draws on Eastern European witchcraft, folk horr
 {{< downloads >}}
   {{< download href="/downloads/fragda-logo-pack.zip"  label="Logo pack"            meta="PNG/SVG">}}
   {{< download href="/downloads/fragda-photos.zip"     label="Press photos (hi-res)" meta="ZIP">}}
-  {{< download href="/downloads/fragda-tech-rider.pdf" label="Tech rider + stage plot" meta="PDF">}}
+  {{< download href="https://docs.google.com/document/d/1Qysv_BllRNAgj26xG0Vvs4rlJMMxn_g_VxdvGZVu1Rg/edit?usp=sharing" label="Tech rider + stage plot" meta="PDF">}}
 {{< /downloads >}}
 
 
