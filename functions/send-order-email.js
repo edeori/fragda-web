@@ -213,6 +213,13 @@ Fragda Shop Team
     await transporter.sendMail(mailOptions);
     console.log("✅ Email sent to customer and copied to owner!");
 
+    // Save to Google Sheets (non-blocking – email success is not affected if this fails)
+    try {
+      await saveToAirtable(order, orderId, shipping);
+    } catch (sheetsError) {
+      console.error("⚠️ Google Sheets save failed (order email still sent):", sheetsError.message);
+    }
+
     return {
       statusCode: 200,
       body: JSON.stringify({ message: "Email sent successfully!" }),
@@ -225,3 +232,54 @@ Fragda Shop Team
     };
   }
 };
+
+async function saveToAirtable(order, orderId, shipping) {
+  const webhookUrl = process.env.SHEETS_WEBHOOK_URL;
+
+  if (!webhookUrl) {
+    console.log("⚠️ SHEETS_WEBHOOK_URL not set, skipping");
+    return;
+  }
+
+  const items = (order.cart || [])
+    .map((item) => `${item.title}${item.size ? ` (${item.size})` : ""} — ${item.price} ${item.currency}`)
+    .join("\n");
+
+  const shippingAddress = order.shippingAddress
+    ? [
+        order.shippingAddress.street,
+        `${order.shippingAddress.zip} ${order.shippingAddress.city}`,
+        order.shippingAddress.country,
+      ]
+        .filter(Boolean)
+        .join(", ")
+    : "";
+
+  const payload = {
+    orderId,
+    date: new Date().toISOString().split("T")[0],
+    name: order.customerName || "",
+    email: order.customerEmail || "",
+    items,
+    total: parseFloat(order.totalAmount) || 0,
+    currency: order.currency || "",
+    paymentMethod: order.paymentMethod || "",
+    shippingMethod: order.shippingMethod || "",
+    shippingAddress,
+    notes: order.orderNotes || "",
+    paypalTransactionId: order.paypalTransactionId || "",
+  };
+
+  const response = await fetch(webhookUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+
+  if (!response.ok) {
+    const err = await response.text();
+    throw new Error(err);
+  }
+
+  console.log("✅ Order saved to Google Sheets");
+}
