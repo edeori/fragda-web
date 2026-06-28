@@ -140,9 +140,13 @@ ${shipping.country || ""}
     </tbody>
   </table>
 
-  <p style="margin-top:10px;"><strong>Total:</strong> ${order.totalAmount} ${
-      order.currency
-    }</p>
+  ${order.shippingCost > 0 ? `
+  <p style="margin-top:10px;">
+    <strong>Subtotal:</strong> ${(parseFloat(order.totalAmount) - order.shippingCost).toFixed(0)} ${order.currency}<br>
+    <strong>Shipping:</strong> ${order.shippingCost} ${order.currency}<br>
+    <strong>Total:</strong> ${order.totalAmount} ${order.currency}
+  </p>` : `
+  <p style="margin-top:10px;"><strong>Total:</strong> ${order.totalAmount} ${order.currency}</p>`}
 
   <h3>Customer Info</h3>
   <p><strong>Name:</strong> ${order.customerName}<br>
@@ -181,7 +185,7 @@ ${(order.cart || [])
   .join("\n")}
 
 
-Total: ${order.totalAmount} ${order.currency}
+${order.shippingCost > 0 ? `Subtotal: ${(parseFloat(order.totalAmount) - order.shippingCost).toFixed(0)} ${order.currency}\nShipping: ${order.shippingCost} ${order.currency}\n` : ""}Total: ${order.totalAmount} ${order.currency}
 
 Customer Info:
 Name: ${order.customerName}

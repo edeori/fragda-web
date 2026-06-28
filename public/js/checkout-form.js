@@ -1,3 +1,31 @@
+// ===============================
+// Shipping rates config
+// ===============================
+
+const SHIPPING_RATES = {
+  pickup:  { label: "Personal Pickup",                 cost: 0    },
+  post:    { label: "Postal Delivery (Magyar Posta)",  cost: 1490 },
+  courier: { label: "Courier Service",                 cost: 1990 },
+  other:   { label: "Parcel Locker / Foxpost / Other", cost: 1290 },
+};
+
+function getShippingCost() {
+  const method = document.getElementById("shipping-method")?.value;
+  return SHIPPING_RATES[method]?.cost ?? 0;
+}
+
+function getItemsTotal(cart) {
+  return cart.reduce((sum, item) => sum + parseFloat(item.price), 0);
+}
+
+function getGrandTotal(cart) {
+  return getItemsTotal(cart) + getShippingCost();
+}
+
+// ===============================
+// Init
+// ===============================
+
 window.addEventListener("DOMContentLoaded", initCheckoutUI);
 
 async function initCheckoutUI() {
@@ -6,7 +34,10 @@ async function initCheckoutUI() {
   const orderForm = document.getElementById("order-form");
 
   toggleShippingAddress();
-  shippingSelect.addEventListener("change", toggleShippingAddress);
+  shippingSelect.addEventListener("change", function () {
+    toggleShippingAddress();
+    renderCartSummary();
+  });
 
   populateEmailFromOrder();
   await renderCartSummary();
@@ -53,7 +84,7 @@ function loadPayPalSDK() {
   const clientId = document.querySelector('meta[name="paypal-client-id"]')?.content;
   if (!clientId || clientId === "YOUR_PAYPAL_CLIENT_ID") {
     document.getElementById("paypal-button-container").innerHTML =
-      '<p style="color:var(--gold);font-size:0.85rem;text-align:center;">PayPal Client ID nincs beállítva. Lásd a checkout.html meta tagját.</p>';
+      '<p style="color:var(--gold);font-size:0.85rem;text-align:center;">PayPal Client ID nincs beállítva.</p>';
     return;
   }
 
@@ -70,7 +101,7 @@ function loadPayPalSDK() {
   };
   script.onerror = function () {
     document.getElementById("paypal-button-container").innerHTML =
-      '<p style="color:#e55;">Hiba a PayPal betöltésekor. Ellenőrizd az internetkapcsolatot.</p>';
+      '<p style="color:#e55;">Hiba a PayPal betöltésekor.</p>';
   };
   document.head.appendChild(script);
 }
@@ -83,15 +114,9 @@ function renderPayPalButtons() {
   container.innerHTML = "";
 
   paypal.Buttons({
-    style: {
-      layout: "vertical",
-      color: "gold",
-      shape: "rect",
-      label: "pay",
-    },
+    style: { layout: "vertical", color: "gold", shape: "rect", label: "pay" },
 
     createOrder: function (data, actions) {
-      // Validate form fields before opening PayPal
       const form = document.getElementById("order-form");
       if (!form.checkValidity()) {
         form.reportValidity();
@@ -104,32 +129,28 @@ function renderPayPalButtons() {
         return Promise.reject(new Error("Empty cart"));
       }
 
-      const total = Math.round(cart.reduce((sum, item) => sum + parseFloat(item.price), 0));
+      const itemsTotal = Math.round(getItemsTotal(cart));
+      const shippingCost = getShippingCost();
+      const grandTotal = itemsTotal + shippingCost;
+      const currency = cart[0].currency || "HUF";
 
       return actions.order.create({
-        purchase_units: [
-          {
-            description: "Fragda Official Merch",
-            amount: {
-              currency_code: "HUF",
-              value: total.toString(),
-              breakdown: {
-                item_total: {
-                  currency_code: "HUF",
-                  value: total.toString(),
-                },
-              },
+        purchase_units: [{
+          description: "Fragda Official Merch",
+          amount: {
+            currency_code: currency,
+            value: grandTotal.toString(),
+            breakdown: {
+              item_total: { currency_code: currency, value: itemsTotal.toString() },
+              shipping:   { currency_code: currency, value: shippingCost.toString() },
             },
-            items: cart.map((item) => ({
-              name: item.title + (item.size ? ` (${item.size})` : ""),
-              unit_amount: {
-                currency_code: "HUF",
-                value: Math.round(parseFloat(item.price)).toString(),
-              },
-              quantity: "1",
-            })),
           },
-        ],
+          items: cart.map((item) => ({
+            name: item.title + (item.size ? ` (${item.size})` : ""),
+            unit_amount: { currency_code: currency, value: Math.round(parseFloat(item.price)).toString() },
+            quantity: "1",
+          })),
+        }],
       });
     },
 
@@ -138,6 +159,7 @@ function renderPayPalButtons() {
       if (loader) loader.classList.remove("hidden");
 
       return actions.order.capture().then(function (details) {
+        const cart = getCart();
         const formData = new FormData(document.getElementById("order-form"));
         const pendingOrder = JSON.parse(localStorage.getItem("pendingOrder")) || {};
 
@@ -147,7 +169,9 @@ function renderPayPalButtons() {
         pendingOrder.shippingMethod = formData.get("shippingMethod");
         pendingOrder.paymentMethod = "PayPal";
         pendingOrder.orderNotes = formData.get("orderNotes");
-        pendingOrder.currency = (pendingOrder.cart && pendingOrder.cart[0]?.currency) || "HUF";
+        pendingOrder.currency = cart[0]?.currency || "HUF";
+        pendingOrder.shippingCost = getShippingCost();
+        pendingOrder.totalAmount = getGrandTotal(cart).toFixed(0);
         pendingOrder.paypalTransactionId = details.id;
         pendingOrder.paypalPayerEmail = details.payer?.email_address;
 
@@ -165,26 +189,13 @@ function renderPayPalButtons() {
           body: JSON.stringify(pendingOrder),
           headers: { "Content-Type": "application/json" },
         })
-          .then(() => {
-            localStorage.removeItem("pendingOrder");
-            localStorage.removeItem("cart");
-            window.location.href = "/shop/?order=success";
-          })
-          .catch(() => {
-            // Payment OK, email failed – still clear cart and redirect
-            localStorage.removeItem("pendingOrder");
-            localStorage.removeItem("cart");
-            window.location.href = "/shop/?order=success";
-          })
-          .finally(() => {
-            if (loader) loader.classList.add("hidden");
-          });
+          .then(() => { localStorage.removeItem("pendingOrder"); localStorage.removeItem("cart"); window.location.href = "/shop/?order=success"; })
+          .catch(() => { localStorage.removeItem("pendingOrder"); localStorage.removeItem("cart"); window.location.href = "/shop/?order=success"; })
+          .finally(() => { if (loader) loader.classList.add("hidden"); });
       });
     },
 
-    onCancel: function () {
-      // User closed the PayPal popup, nothing to do
-    },
+    onCancel: function () {},
 
     onError: function (err) {
       console.error("PayPal error:", err);
@@ -202,6 +213,7 @@ function renderPayPalButtons() {
 async function handleOrderSubmit(event) {
   event.preventDefault();
 
+  const cart = getCart();
   const formData = new FormData(document.getElementById("order-form"));
   const pendingOrder = JSON.parse(localStorage.getItem("pendingOrder")) || {};
 
@@ -211,7 +223,9 @@ async function handleOrderSubmit(event) {
   pendingOrder.shippingMethod = formData.get("shippingMethod");
   pendingOrder.paymentMethod = formData.get("paymentMethod");
   pendingOrder.orderNotes = formData.get("orderNotes");
-  pendingOrder.currency = (pendingOrder.cart && pendingOrder.cart[0]?.currency) || "";
+  pendingOrder.currency = cart[0]?.currency || "";
+  pendingOrder.shippingCost = getShippingCost();
+  pendingOrder.totalAmount = getGrandTotal(cart).toFixed(0);
 
   if (["post", "courier", "other"].includes(pendingOrder.shippingMethod)) {
     pendingOrder.shippingAddress = {
@@ -230,17 +244,9 @@ async function handleOrderSubmit(event) {
     body: JSON.stringify(pendingOrder),
     headers: { "Content-Type": "application/json" },
   })
-    .then(() => {
-      localStorage.removeItem("pendingOrder");
-      localStorage.removeItem("cart");
-      window.location.href = "/shop/?order=success";
-    })
-    .catch(() => {
-      alert("Hiba az email küldésekor. Vedd fel velünk a kapcsolatot.");
-    })
-    .finally(() => {
-      if (loader) loader.classList.add("hidden");
-    });
+    .then(() => { localStorage.removeItem("pendingOrder"); localStorage.removeItem("cart"); window.location.href = "/shop/?order=success"; })
+    .catch(() => { alert("Hiba az email küldésekor. Vedd fel velünk a kapcsolatot."); })
+    .finally(() => { if (loader) loader.classList.add("hidden"); });
 }
 
 // ===============================
@@ -257,7 +263,6 @@ async function renderCartSummary() {
 
   cart.forEach((item, index) => {
     const sizeLabel = item.size ? `Size: ${item.size}` : "";
-
     const html = template
       .replace(/{{image}}/g, item.image)
       .replace(/{{title}}/g, item.title)
@@ -271,11 +276,31 @@ async function renderCartSummary() {
     container.appendChild(temp.firstElementChild);
   });
 
-  const total = cart.reduce((sum, item) => sum + parseFloat(item.price), 0);
   const currency = cart.length > 0 ? cart[0].currency : "";
+  const itemsTotal = getItemsTotal(cart);
+  const shippingCost = getShippingCost();
+  const grandTotal = itemsTotal + shippingCost;
+
+  // Subtotal
+  const subtotalEl = document.createElement("div");
+  subtotalEl.className = "cart-total-line";
+  subtotalEl.style.cssText = "display:flex;justify-content:space-between;font-size:0.9rem;color:var(--text-muted);padding-top:1rem;border-top:1px solid var(--border);margin-top:0.5rem;";
+  subtotalEl.innerHTML = `<span>Subtotal</span><span>${Math.round(itemsTotal).toLocaleString()} ${currency}</span>`;
+  container.appendChild(subtotalEl);
+
+  // Shipping
+  const shippingEl = document.createElement("div");
+  shippingEl.className = "cart-total-line";
+  shippingEl.style.cssText = "display:flex;justify-content:space-between;font-size:0.9rem;color:var(--text-muted);margin-top:0.4rem;";
+  shippingEl.innerHTML = shippingCost > 0
+    ? `<span>Shipping</span><span>${shippingCost.toLocaleString()} ${currency}</span>`
+    : `<span>Shipping</span><span style="color:var(--gold)">Free</span>`;
+  container.appendChild(shippingEl);
+
+  // Grand total
   const totalEl = document.createElement("div");
-  totalEl.className = "cart-total-line";
-  totalEl.textContent = `Total: ${total.toFixed(2)} ${currency}`;
+  totalEl.style.cssText = "display:flex;justify-content:space-between;font-size:1.05rem;font-weight:700;color:var(--gold);padding-top:0.75rem;border-top:1px solid var(--border);margin-top:0.75rem;";
+  totalEl.innerHTML = `<span>Total</span><span>${Math.round(grandTotal).toLocaleString()} ${currency}</span>`;
   container.appendChild(totalEl);
 
   container.querySelectorAll(".cart-delete").forEach((btn) => {
@@ -305,9 +330,7 @@ function toggleShippingAddress() {
   const addressSection = document.getElementById("shipping-address");
   const show = ["post", "courier", "other"].includes(shippingSelect?.value);
   addressSection.style.display = show ? "block" : "none";
-  addressSection.querySelectorAll("input").forEach((input) => {
-    input.required = show;
-  });
+  addressSection.querySelectorAll("input").forEach((input) => { input.required = show; });
 }
 
 function removeFromCartCheckout(event) {
