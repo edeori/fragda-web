@@ -1,36 +1,71 @@
 {{ define "main" }}
-<link rel="stylesheet" href="{{ "css/concerts.css" | relURL }}">
-<section class="concerts-list">
+
+<div class="page-hero">
+  <p class="page-hero__eyebrow">Live</p>
+  <h1 class="page-hero__title">Concerts</h1>
+</div>
+<hr class="section-divider">
+
+<section class="concerts-section">
+  <div class="container">
 
     {{ $concerts := where .Site.RegularPages "Section" "concerts" }}
     {{ $sortedConcerts := sort $concerts "Params.datetime" "desc" }}
 
-    <div class="concert-container">
-        {{ range $sortedConcerts }}
-        {{ $datetimeStr := print .Params.datetime ":00" }} {{/* Ensures seconds exist */}}
-        {{ $eventDate := $datetimeStr | time.AsTime }}
-        {{ $isUpcoming := gt $eventDate now }}
-
-        <div class="concert-item {{ if $isUpcoming }}upcoming{{ else }}past{{ end }}">
-            <div class="concert-details">
-                <span class="concert-date">📅 {{ $eventDate.Format "January 2, 2006 - 15:04" }}</span>
-                <span class="concert-name"><strong>{{ .Title }}</strong></span>
-                <span class="concert-location">📍 {{ .Params.location }}</span>
-                <span class="concert-status">
-                    {{ if $isUpcoming }} 🟢 <strong>Upcoming</strong>
-                    {{ else }} 🔴 <strong>Past</strong>
-                    {{ end }}
-                </span>
-                {{ if .Params.ticket_link }}
-                <a href="{{ .Params.ticket_link }}" target="_blank" class="ticket-link">
-                    Buy Tickets
-                </a>
-                {{ end }}
-            </div>
-
-        </div>
-        {{ end }}
+    {{ if $sortedConcerts }}
+    <div class="concerts-table-wrap">
+      <table class="concerts-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Event</th>
+            <th>Location</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ range $sortedConcerts }}
+          {{ $datetimeStr := print .Params.datetime ":00" }}
+          {{ $eventDate := $datetimeStr | time.AsTime }}
+          {{ $isUpcoming := gt $eventDate now }}
+          <tr>
+            <td>
+              <span class="concert-date">{{ $eventDate.Format "Jan 2, 2006" }}</span>
+            </td>
+            <td>
+              <div class="concert-venue">{{ .Title }}</div>
+            </td>
+            <td>
+              <div class="concert-location">{{ .Params.location }}</div>
+            </td>
+            <td>
+              {{ if $isUpcoming }}
+              <span class="badge badge-upcoming">Upcoming</span>
+              {{ else }}
+              <span class="badge badge-past">Past</span>
+              {{ end }}
+            </td>
+            <td>
+              {{ if and $isUpcoming .Params.ticket_link }}
+              <a href="{{ .Params.ticket_link }}" target="_blank" rel="noopener" class="btn btn-gold btn-sm">
+                Tickets
+              </a>
+              {{ end }}
+            </td>
+          </tr>
+          {{ end }}
+        </tbody>
+      </table>
     </div>
+    {{ else }}
+    <div class="concerts-empty">
+      <i class="fa-solid fa-calendar-xmark"></i>
+      <p>No concerts scheduled yet.<br>Follow us on social media for updates.</p>
+    </div>
+    {{ end }}
 
+  </div>
 </section>
+
 {{ end }}

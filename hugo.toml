@@ -1,32 +1,23 @@
-####################################
-# Hugo Site Configuration
-####################################
-
 baseURL = "https://fragda.hu/"
 languageCode = "en-us"
 title = "Fragda Official"
 theme = "ananke"
 
-####################################
-# Site Parameters (Uncomment if needed)
-####################################
-
-# [params]
-#   site_logo = "/images/fragda-logo.png"
-
 [params]
-  assetsDir = "static"  # Ensure Hugo knows where static files are
-  defaultLayout = "layouts"
-#  site_logo = "/images/fragda-logo.png"
+  description = "Fragda — Blackened deathcore from Budapest, Hungary"
+  tagline = "Budapest, Hungary — Extreme Metal"
+
+  [params.social]
+    spotify   = "https://open.spotify.com/artist/5mNWDBllI3C15aNY1eucFf"
+    bandcamp  = "https://fragda.bandcamp.com"
+    youtube   = "https://www.youtube.com/@fragda"
+    facebook  = "https://www.facebook.com/fragdaofficial"
+    instagram = "https://www.instagram.com/fragdaofficial"
 
 [outputs]
-  home = ["HTML", "RSS"]
+  home    = ["HTML", "RSS"]
   section = ["HTML"]
   taxonomy = ["HTML"]
-
-####################################
-# Navigation Menu
-####################################
 
 [[menu.main]]
   identifier = "releases"

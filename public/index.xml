@@ -1,82 +1,58 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Fragda Official</title>
-    <link>http://localhost:1313/</link>
-    <description>Recent content on Fragda Official</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 03 Jun 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Production behind schedule</title>
-      <link>http://localhost:1313/posts/production-behind-schedule/</link>
-      <pubDate>Tue, 03 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/production-behind-schedule/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;🜏 Hey, everyone! 🜏&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;We got to inform you that the production of the physicals (digipack) and the T-shirts are a bit behind schedule.&lt;/p&gt;&#xA;&lt;p&gt;No &lt;a href=&#34;&#34;&gt;&lt;/a&gt;worries, it&amp;rsquo;s on the way and we will send them out as soon as we got them.&lt;/p&gt;&#xA;&lt;p&gt;Thanks for your patience!&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>The Glorification of Witchery merch presale has officially begun!</title>
-      <link>http://localhost:1313/posts/the-glorification-of-witchery-merch-presale-has-officially-begun/</link>
-      <pubDate>Sat, 03 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/the-glorification-of-witchery-merch-presale-has-officially-begun/</guid>
-      <description>&lt;p&gt;Secure your preorder now — shipments will commence on June 1, 2025.&lt;/p&gt;&#xA;&lt;p&gt;T-shirts are available in all sizes, and we&amp;rsquo;re also planning to release a special bundle including both the shirt and the CD at a later date — stay tuned!&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Glorification of Witchery album release</title>
-      <link>http://localhost:1313/posts/glorification-of-witchery-album-release/</link>
-      <pubDate>Wed, 02 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/glorification-of-witchery-album-release/</guid>
-      <description>&lt;p&gt;On April 6, Fragda unveils &lt;em&gt;Glorification of Witchery&lt;/em&gt;, a full-length album that channels the ancient forces of Eastern European witchcraft through a bold fusion of black metal, modern death metal, and cinematic soundscapes. This is not just an album— it’s a ritual invocation, merging raw aggression with theatrical atmospheres and hypnotic intensity.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title></title>
-      <link>http://localhost:1313/epk/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/epk/</guid>
-      <description>&lt;style&gt;&#xD;&#xA;  :root{&#xD;&#xA;    --fragda-gold-500:#7e5e22;&#xD;&#xA;    --fragda-gold-600:#654b1b;&#xD;&#xA;    --fragda-gold-700:#523d16;&#xD;&#xA;    --fragda-gold-400:#9e8659;&#xD;&#xA;    --fg:#e7e3da;  &#xD;&#xA;    --bg:#0d0d0d;&#xD;&#xA;  }&#xD;&#xA;&#xD;&#xA;   &#xD;&#xA;  .epk-page{ background:var(--bg); }&#xD;&#xA;&#xD;&#xA;   &#xD;&#xA;  .nested-copy-line-height{ color:var(--fg) !important; }&#xD;&#xA;  .nested-copy-line-height h1,&#xD;&#xA;  .nested-copy-line-height h2,&#xD;&#xA;  .nested-copy-line-height h3,&#xD;&#xA;  .nested-copy-line-height h4{ color:var(--fg) !important; }&#xD;&#xA;  .nested-copy-line-height a{&#xD;&#xA;    color:var(--fg) !important;&#xD;&#xA;    text-decoration:none;&#xD;&#xA;    border-bottom:1px solid var(--fragda-gold-600);&#xD;&#xA;  }&#xD;&#xA;  .nested-copy-line-height a:hover{&#xD;&#xA;    border-color:var(--fragda-gold-400);&#xD;&#xA;  }&#xD;&#xA;&#xD;&#xA;   &#xD;&#xA;  .fragda-gallery .fg-viewport,&#xD;&#xA;  .bc-wrap, .bc-row .bc-col .bc-iframe,&#xD;&#xA;  .yt-wrap{&#xD;&#xA;    box-shadow: 0 0 0 1px rgba(126,94,34,.25);&#xD;&#xA;    border-radius:12px;&#xD;&#xA;  }&#xD;&#xA;&lt;/style&gt;&#xD;&#xA;&#xA;&lt;div class=&#34;epk-logo&#34;&gt;&#xD;&#xA;    &lt;img src=&#34;fragda-logo.png&#34; alt=&#34;Fragda logo&#34;&gt;&#xD;&#xA;  &lt;/div&gt;&#xD;&#xA;  &lt;style&gt;&#xD;&#xA;    .epk-logo{&#xD;&#xA;      display:flex;&#xD;&#xA;      justify-content:center;&#xD;&#xA;      margin:2rem 0;&#xD;&#xA;    }&#xD;&#xA;    .epk-logo img{&#xD;&#xA;      max-width:300px;  &#xD;&#xA;      height:auto;&#xD;&#xA;    }&#xD;&#xA;  &lt;/style&gt;&#xA;&lt;p&gt;&lt;strong&gt;Fragda&lt;/strong&gt; is a &lt;strong&gt;Budapest, Hungary&lt;/strong&gt;-based band that conjures a suffocating hybrid of modern death metal, precise deathcore mechanics, and the haunted aura of black metal. Marked by fractured rhythms and cinematic arrangements, their music embodies a mythic, occult-laden atmosphere — a soundscape that has been dubbed &lt;em&gt;blackcore&lt;/em&gt;, at once destructive and otherworldly.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>About Fragda</title>
-      <link>http://localhost:1313/bio/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/bio/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Fragda&lt;/strong&gt; is a &lt;strong&gt;Budapest, Hungary-based&lt;/strong&gt; band that blends the extremity of modern death metal, the precision of deathcore, and the atmosphere of black metal into a distinct, oppressive sound. Their music is defined by fractured rhythms, tremolo-picked dissonance, and orchestral, cinematic arrangements — often described by critics as a unique form of &lt;em&gt;blackcore&lt;/em&gt;.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/uploads/2v9a6639-enhanced-nr.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Custom-built seven-string baritone guitars in drop E tuning form the backbone of their sonic identity. Whammy-driven pitch shifts and dense, layered guitar tracks create a massive, overwhelming &lt;em&gt;wall of sound&lt;/em&gt; that has become their hallmark.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Damnation is Inevitable</title>
-      <link>http://localhost:1313/releases/damnation-is-inevitable/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/releases/damnation-is-inevitable/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Glorification of Witchery</title>
-      <link>http://localhost:1313/releases/glorification-of-witchery/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/releases/glorification-of-witchery/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Glorification of Witchery CD</title>
-      <link>http://localhost:1313/shop/glorification-of-witchery-cd/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/shop/glorification-of-witchery-cd/</guid>
-      <description>&lt;p&gt;G﻿lorification of Witchery Digipack CD&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Glorification of Witchery T-Shirt</title>
-      <link>http://localhost:1313/shop/glorification-of-witchery-t-shirt/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/shop/glorification-of-witchery-t-shirt/</guid>
-      <description>&lt;p&gt;Glorification of Witchery album cover t-shirt&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Payment Settings</title>
-      <link>http://localhost:1313/config/payment/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/config/payment/</guid>
-      <description></description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Fragda Official</title><link>https://fragda.hu/</link><description>Recent content on Fragda Official</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 03 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://fragda.hu/index.xml" rel="self" type="application/rss+xml"/><item><title>Production behind schedule</title><link>https://fragda.hu/posts/production-behind-schedule/</link><pubDate>Tue, 03 Jun 2025 00:00:00 +0000</pubDate><guid>https://fragda.hu/posts/production-behind-schedule/</guid><description>&lt;p&gt;&lt;strong&gt;🜏 Hey, everyone! 🜏&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;We got to inform you that the production of the physicals (digipack) and the T-shirts are a bit behind schedule.&lt;/p&gt;
+&lt;p&gt;No &lt;a href=""&gt;&lt;/a&gt;worries, it&amp;rsquo;s on the way and we will send them out as soon as we got them.&lt;/p&gt;
+&lt;p&gt;Thanks for your patience!&lt;/p&gt;</description></item><item><title>The Glorification of Witchery merch presale has officially begun!</title><link>https://fragda.hu/posts/the-glorification-of-witchery-merch-presale-has-officially-begun/</link><pubDate>Sat, 03 May 2025 00:00:00 +0000</pubDate><guid>https://fragda.hu/posts/the-glorification-of-witchery-merch-presale-has-officially-begun/</guid><description>&lt;p&gt;Secure your preorder now — shipments will commence on June 1, 2025.&lt;/p&gt;
+&lt;p&gt;T-shirts are available in all sizes, and we&amp;rsquo;re also planning to release a special bundle including both the shirt and the CD at a later date — stay tuned!&lt;/p&gt;</description></item><item><title>Glorification of Witchery album release</title><link>https://fragda.hu/posts/glorification-of-witchery-album-release/</link><pubDate>Wed, 02 Apr 2025 00:00:00 +0000</pubDate><guid>https://fragda.hu/posts/glorification-of-witchery-album-release/</guid><description>&lt;p&gt;On April 6, Fragda unveils &lt;em&gt;Glorification of Witchery&lt;/em&gt;, a full-length album that channels the ancient forces of Eastern European witchcraft through a bold fusion of black metal, modern death metal, and cinematic soundscapes. This is not just an album— it’s a ritual invocation, merging raw aggression with theatrical atmospheres and hypnotic intensity.&lt;/p&gt;</description></item><item><title/><link>https://fragda.hu/epk/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://fragda.hu/epk/</guid><description>&lt;style&gt;
+ :root{
+ --fragda-gold-500:#7e5e22;
+ --fragda-gold-600:#654b1b;
+ --fragda-gold-700:#523d16;
+ --fragda-gold-400:#9e8659;
+ --fg:#e7e3da; 
+ --bg:#0d0d0d;
+ }
+
+ 
+ .epk-page{ background:var(--bg); }
+
+ 
+ .nested-copy-line-height{ color:var(--fg) !important; }
+ .nested-copy-line-height h1,
+ .nested-copy-line-height h2,
+ .nested-copy-line-height h3,
+ .nested-copy-line-height h4{ color:var(--fg) !important; }
+ .nested-copy-line-height a{
+ color:var(--fg) !important;
+ text-decoration:none;
+ border-bottom:1px solid var(--fragda-gold-600);
+ }
+ .nested-copy-line-height a:hover{
+ border-color:var(--fragda-gold-400);
+ }
+
+ 
+ .fragda-gallery .fg-viewport,
+ .bc-wrap, .bc-row .bc-col .bc-iframe,
+ .yt-wrap{
+ box-shadow: 0 0 0 1px rgba(126,94,34,.25);
+ border-radius:12px;
+ }
+&lt;/style&gt;
+
+&lt;div class="epk-logo"&gt;
+ &lt;img src="fragda-logo.png" alt="Fragda logo"&gt;
+ &lt;/div&gt;
+ &lt;style&gt;
+ .epk-logo{
+ display:flex;
+ justify-content:center;
+ margin:2rem 0;
+ }
+ .epk-logo img{
+ max-width:300px; 
+ height:auto;
+ }
+ &lt;/style&gt;
+&lt;p&gt;&lt;strong&gt;Fragda&lt;/strong&gt; is a &lt;strong&gt;Budapest, Hungary&lt;/strong&gt;-based band that conjures a suffocating hybrid of modern death metal, precise deathcore mechanics, and the haunted aura of black metal. Marked by fractured rhythms and cinematic arrangements, their music embodies a mythic, occult-laden atmosphere — a soundscape that has been dubbed &lt;em&gt;blackcore&lt;/em&gt;, at once destructive and otherworldly.&lt;/p&gt;</description></item><item><title>About Fragda</title><link>https://fragda.hu/bio/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://fragda.hu/bio/</guid><description>&lt;p&gt;&lt;strong&gt;Fragda&lt;/strong&gt; is a &lt;strong&gt;Budapest, Hungary-based&lt;/strong&gt; band that blends the extremity of modern death metal, the precision of deathcore, and the atmosphere of black metal into a distinct, oppressive sound. Their music is defined by fractured rhythms, tremolo-picked dissonance, and orchestral, cinematic arrangements — often described by critics as a unique form of &lt;em&gt;blackcore&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://fragda.hu/images/uploads/2v9a6639-enhanced-nr.jpg" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;Custom-built seven-string baritone guitars in drop E tuning form the backbone of their sonic identity. Whammy-driven pitch shifts and dense, layered guitar tracks create a massive, overwhelming &lt;em&gt;wall of sound&lt;/em&gt; that has become their hallmark.&lt;/p&gt;</description></item><item><title>Damnation is Inevitable</title><link>https://fragda.hu/releases/damnation-is-inevitable/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://fragda.hu/releases/damnation-is-inevitable/</guid><description/></item><item><title>Glorification of Witchery</title><link>https://fragda.hu/releases/glorification-of-witchery/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://fragda.hu/releases/glorification-of-witchery/</guid><description/></item><item><title>Glorification of Witchery CD</title><link>https://fragda.hu/shop/glorification-of-witchery-cd/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://fragda.hu/shop/glorification-of-witchery-cd/</guid><description>&lt;p&gt;G﻿lorification of Witchery Digipack CD&lt;/p&gt;</description></item><item><title>Glorification of Witchery T-Shirt</title><link>https://fragda.hu/shop/glorification-of-witchery-t-shirt/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://fragda.hu/shop/glorification-of-witchery-t-shirt/</guid><description>&lt;p&gt;Glorification of Witchery album cover t-shirt&lt;/p&gt;</description></item><item><title>Payment Settings</title><link>https://fragda.hu/config/payment/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://fragda.hu/config/payment/</guid><description/></item></channel></rss>

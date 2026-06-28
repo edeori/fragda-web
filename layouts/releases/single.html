@@ -1,28 +1,62 @@
 {{ define "main" }}
-<link rel="stylesheet" href="{{ "css/release.css" | relURL }}">
-<article class="release-details">
-  <h1>{{ .Title }}</h1>
-  <p class="release-year">{{ .Params.year }}</p>
 
-  <img src="{{ .Params.image }}" alt="{{ .Title }}" class="release-cover-large">
+<div class="page-hero">
+  <p class="page-hero__eyebrow">{{ .Params.year }}</p>
+  <h1 class="page-hero__title">{{ .Title }}</h1>
+</div>
+<hr class="section-divider">
 
-  {{ if .Params.spotify }}
-  <div class="spotify-link">
-    <a href="{{ .Params.spotify }}" target="_blank">
-      <img src="/images/spotify-icon.png" alt="Listen on Spotify" class="spotify-icon">
-    </a>
-  </div>
-  {{ end }}
+<section class="release-single">
+  <div class="container">
+    <div class="release-single__hero">
 
-  <h2>Tracklist</h2>
-  <ul class="tracklist">
-    {{ range .Params.songs }}
-    <li>{{ .title }}</li>
+      <div class="release-single__art">
+        {{ with .Params.image }}
+        <img src="{{ . }}" alt="{{ $.Title }}">
+        {{ end }}
+      </div>
+
+      <div class="release-single__meta">
+        <p class="release-single__year">{{ .Params.year }}</p>
+        <h1 class="release-single__title">{{ .Title }}</h1>
+
+        <div class="release-single__links">
+          {{ with .Params.spotify }}
+          <a href="{{ . }}" target="_blank" rel="noopener" class="btn btn-gold">
+            <i class="fab fa-spotify"></i> Listen on Spotify
+          </a>
+          {{ end }}
+          <a href="https://fragda.bandcamp.com" target="_blank" rel="noopener" class="btn btn-outline">
+            <i class="fab fa-bandcamp"></i> Bandcamp
+          </a>
+        </div>
+
+        {{ if .Params.songs }}
+        <p class="tracklist-label">Tracklist</p>
+        <ol class="tracklist">
+          {{ range $i, $song := .Params.songs }}
+          <li>
+            <span class="track-num">{{ add $i 1 }}</span>
+            <span class="track-title">{{ $song.title }}</span>
+            {{ with $song.spotify }}
+            <a href="{{ . }}" target="_blank" rel="noopener" class="track-link" aria-label="Listen on Spotify">
+              <i class="fab fa-spotify"></i>
+            </a>
+            {{ end }}
+          </li>
+          {{ end }}
+        </ol>
+        {{ end }}
+      </div>
+
+    </div>
+
+    {{ with .Content }}
+    <div class="prose container--narrow">
+      {{ . }}
+    </div>
     {{ end }}
-  </ul>
-
-  <div class="release-description">
-    {{ .Content }}
   </div>
-</article>
+</section>
+
 {{ end }}

@@ -1,14 +1,40 @@
 {{ define "main" }}
-<link rel="stylesheet" href="{{ "css/release.css" | relURL }}">
-  <div class="releases-grid">
-    {{ range .Pages }}
-      <div class="release-item">
-        <a href="{{ .Permalink }}">
-          <img src="{{ .Params.image }}" alt="{{ .Title }}" class="release-cover">
-        </a>
-        <h3>{{ .Title }}</h3>
-        <p>{{ .Params.year }}</p>
-      </div>
+
+<div class="page-hero">
+  <p class="page-hero__eyebrow">Discography</p>
+  <h1 class="page-hero__title">Releases</h1>
+</div>
+<hr class="section-divider">
+
+<section class="releases-section">
+  <div class="container">
+    {{ if .Pages }}
+    <div class="releases-grid">
+      {{ range sort .Pages "Params.year" "desc" }}
+      <a href="{{ .Permalink }}" class="release-card">
+        <div class="release-card__art">
+          {{ with .Params.image }}
+          <img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">
+          {{ end }}
+        </div>
+        <div class="release-card__info">
+          <p class="release-card__year">{{ .Params.year }}</p>
+          <h2 class="release-card__title">{{ .Title }}</h2>
+          <div class="release-card__links">
+            {{ with .Params.spotify }}
+            <span class="btn btn-outline btn-sm">
+              <i class="fab fa-spotify"></i> Spotify
+            </span>
+            {{ end }}
+          </div>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+    {{ else }}
+    <p style="text-align:center; color: var(--text-muted); padding: 4rem 0;">No releases yet.</p>
     {{ end }}
   </div>
+</section>
+
 {{ end }}

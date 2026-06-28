@@ -1,19 +1,27 @@
 <div class="product-card">
-    <img src="{{ .Params.image }}" alt="{{ .Title }}" class="product-image">
+  <div class="product-card__image">
+    <img src="{{ .Params.image }}" alt="{{ .Title }}" class="product-image" loading="lazy">
+  </div>
+  <div class="product-card__body">
     <h2 class="product-title">{{ .Title }}</h2>
     <p class="product-price">{{ .Params.price }} {{ .Params.currency }}</p>
 
     {{ if .Params.availableSizes }}
-    <label for="size-{{ .Title | urlize }}" class="product-label">Size:</label>
-    <select class="product-size" id="size-{{ .Title | urlize }}">
+    <div>
+      <label class="product-label" for="size-{{ .Title | urlize }}">Size</label>
+      <select class="product-size" id="size-{{ .Title | urlize }}">
         {{ range .Params.availableSizes }}
         <option value="{{ . }}">{{ . }}</option>
         {{ end }}
-    </select>
+      </select>
+    </div>
     {{ end }}
 
-    <button class="add-to-cart" data-title="{{ .Title }}" data-price="{{ .Params.price }}"
-        data-currency="{{ .Params.currency }}">
-        🛒 Add to Cart
+    <button class="add-to-cart"
+      data-title="{{ .Title }}"
+      data-price="{{ .Params.price }}"
+      data-currency="{{ .Params.currency }}">
+      <i class="fa-solid fa-cart-plus"></i> Add to Cart
     </button>
+  </div>
 </div>

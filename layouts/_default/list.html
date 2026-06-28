@@ -1,0 +1,22 @@
+{{ define "main" }}
+
+<div class="page-hero">
+  <p class="page-hero__eyebrow">Fragda</p>
+  <h1 class="page-hero__title">{{ .Title }}</h1>
+</div>
+<hr class="section-divider">
+
+<section style="padding: 4rem 0 5rem;">
+  <div class="container--narrow">
+    {{ range .Pages }}
+    <div style="padding: 1.25rem 0; border-bottom: 1px solid var(--border);">
+      <h2 style="font-size: 1.1rem; margin-bottom: 0.3rem;">
+        <a href="{{ .RelPermalink }}" style="color: var(--text); text-decoration: none;">{{ .Title }}</a>
+      </h2>
+      <p style="font-size: 0.8rem; color: var(--text-muted);">{{ .Date.Format "January 2, 2006" }}</p>
+    </div>
+    {{ end }}
+  </div>
+</section>
+
+{{ end }}

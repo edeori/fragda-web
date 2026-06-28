@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /Users/mothproduction/Documents/VSCode/fragda-web -type f | head -60 && echo \"---\" && ls /Users/mothproduction/Documents/VSCode/)",
+      "Read(//Users/mothproduction/Documents/VSCode/**)",
+      "Bash(find /Users/mothproduction/Documents/VSCode/needless-web -type f -name \"package.json\" | head -20)",
+      "Read(//Users/mothproduction/Documents/VSCode/needless-web/**)",
+      "Bash(ls -la /Users/mothproduction/Documents/VSCode/needless-web/ | head -30)",
+      "Bash(find /Users/mothproduction/Documents/VSCode/needless-web -type f \\\\\\( -name \"*.json\" -o -name \"*.css\" -o -name \"*.scss\" -o -name \"*.tsx\" -o -name \"*.ts\" -o -name \"*.jsx\" -o -name \"*.js\" -o -name \"*.html\" -o -name \"*.md\" \\\\\\) | sort)",
+      "Bash(find /Users/mothproduction/Documents/VSCode/needless-web -type d | head -100 | sort)",
+      "Read(//Users/mothproduction/Documents/VSCode/needless-web/site/www/**)",
+      "Bash(find /Users/mothproduction/Documents/VSCode/needless-web/site/www/user -type f -name \"*.yaml\" -o -name \"*.yml\" | sort)",
+      "Read(//Users/mothproduction/Documents/VSCode/needless-web/site/www/user/**)",
+      "Read(//Users/mothproduction/Documents/VSCode/needless-web/site/www/user/config/**)",
+      "Read(//Users/mothproduction/Documents/VSCode/needless-web/site/www/user/config/themes/**)",
+      "Read(//Users/mothproduction/Documents/VSCode/needless-web/site/www/user/themes/quark/**)",
+      "Bash(hugo --gc --minify)",
+      "Bash(brew list *)",
+      "Read(//usr/local/bin/**)",
+      "Bash(npm run *)",
+      "Bash(find /Users/mothproduction -name \"hugo\" -type f 2>/dev/null | head -5)",
+      "Read(//Users/mothproduction/**)",
+      "Bash(/opt/homebrew/bin/hugo --gc --minify)"
+    ]
+  }
+}

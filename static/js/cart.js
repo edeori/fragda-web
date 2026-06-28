@@ -24,11 +24,15 @@ function setupCartEvents() {
   }
 
   // Close cart when clicking outside
-  //   document.addEventListener("click", function (event) {
-  //     if (!cartSidebar.contains(event.target) && event.target !== cartToggle) {
-  //       cartSidebar.classList.remove("cart-visible");
-  //     }
-  //   });
+  document.addEventListener("click", function (event) {
+    if (
+      cartSidebar.classList.contains("cart-visible") &&
+      !cartSidebar.contains(event.target) &&
+      !cartToggle.contains(event.target)
+    ) {
+      cartSidebar.classList.remove("cart-visible");
+    }
+  });
 
   // if (checkoutBtn && emailInput) {
   if (checkoutBtn) {

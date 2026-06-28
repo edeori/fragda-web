@@ -1,22 +1,29 @@
 {{ define "main" }}
-<link rel="stylesheet" href={{ "css/shop-list.css" | relURL }}>
-<link rel="stylesheet" href={{ "css/cart-item.css" | relURL }}>
-<link rel="stylesheet" href={{ "css/product-card.css" | relURL }}>
 
-<!-- Payment Configuration -->
 {{ $payment := .Site.GetPage "config/payment" }}
 <meta name="paypal-email" content="{{ $payment.Params.paypal_email }}">
 
-<section class="shop-grid">
-    <div class="product-container">
-        {{ $products := where .Site.RegularPages "Section" "shop" }}
-        {{ range $products }}
-        {{ partial "product-card.html" . }}
-        {{ end }}
+<div class="page-hero">
+  <p class="page-hero__eyebrow">Merch</p>
+  <h1 class="page-hero__title">Shop</h1>
+</div>
+<hr class="section-divider">
 
+<section class="shop-section">
+  <div class="container">
+    <div class="shop-grid">
+      {{ $products := where .Site.RegularPages "Section" "shop" }}
+      {{ range $products }}
+      {{ partial "product-card.html" . }}
+      {{ end }}
     </div>
+  </div>
 </section>
 
-<!-- Cart Sidebar (Partial) -->
 {{ partial "cart.html" . }}
+
+{{ end }}
+
+{{ define "scripts" }}
+<script src="{{ "/js/cart.js" | relURL }}"></script>
 {{ end }}

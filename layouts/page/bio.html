@@ -1,12 +1,17 @@
 {{ define "main" }}
-<link rel="stylesheet" href={{ "css/bio.css" | relURL }}>
-<section class="bio-page">
-    <div class="bio-container">
-        <h1 class="bio-title">{{ .Title }}</h1>
 
-        <div class="bio-content">
-            {{ .Content }}
-        </div>
+<div class="page-hero">
+  <p class="page-hero__eyebrow">The Band</p>
+  <h1 class="page-hero__title">{{ .Title }}</h1>
+</div>
+<hr class="section-divider">
+
+<section class="bio-section">
+  <div class="container--narrow">
+    <div class="bio-content">
+      {{ .Content }}
     </div>
+  </div>
 </section>
+
 {{ end }}

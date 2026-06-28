@@ -1,0 +1,15 @@
+{{ define "main" }}
+
+<div class="page-hero">
+  <p class="page-hero__eyebrow">Fragda</p>
+  <h1 class="page-hero__title">{{ .Title }}</h1>
+</div>
+<hr class="section-divider">
+
+<section style="padding: 4rem 0 5rem;">
+  <div class="container--narrow prose">
+    {{ .Content }}
+  </div>
+</section>
+
+{{ end }}

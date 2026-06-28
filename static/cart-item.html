@@ -1,5 +1,11 @@
 <li class="cart-item">
-    <img class="cart-item-image" src="{{image}}" alt="{{title}}">
-    <span class="cart-item-text">{{title}} {{size}} - {{price}} {{currency}}</span>
-    <button class="cart-delete" data-index="{{index}}">✖</button>
+  <img src="{{image}}" alt="{{title}}" loading="lazy">
+  <div class="cart-item-info">
+    <div class="cart-item-title">{{title}}</div>
+    <div class="cart-item-size">{{size}}</div>
+    <div class="cart-item-price">{{price}} {{currency}}</div>
+  </div>
+  <button class="cart-delete" data-index="{{index}}" aria-label="Remove item">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
 </li>

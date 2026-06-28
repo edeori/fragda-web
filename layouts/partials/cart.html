@@ -1,15 +1,13 @@
-<!-- Cart Toggle Button -->
-<button id="cart-toggle">🛒
-    <span id="cart-count" class="cart-count">0</span>
+<button id="cart-toggle" aria-label="Open cart">
+  <i class="fa-solid fa-bag-shopping"></i>
+  <span id="cart-count" class="cart-count">0</span>
 </button>
 
-<!-- Cart Sidebar -->
-<div id="cart-sidebar" class="cart-sidebar">
-    <h2>Your Cart</h2>
-    <ul id="cart-items"></ul>
+<aside id="cart-sidebar" class="cart-sidebar" role="dialog" aria-label="Shopping cart" aria-modal="true">
+  <h2>Your Cart</h2>
+  <ul id="cart-items"></ul>
+  <div class="cart-sidebar-footer">
     <p id="cart-total" class="cart-total"></p>
-    <button id="checkout-btn" disabled class="checkout-button">Go Checkout</button>
-</div>
-
-<!-- JavaScript Files -->
-<script src={{ "js/cart.js" | relURL }}></script>
+    <button id="checkout-btn" disabled class="checkout-button">Proceed to Checkout</button>
+  </div>
+</aside>

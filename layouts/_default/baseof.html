@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en" }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description | default .Site.Title }}{{ end }}">
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="{{ "css/theme.css" | relURL }}">
+
+  {{ block "head" . }}{{ end }}
+</head>
+<body class="{{ if .IsHome }}is-home{{ end }}">
+
+  {{ partial "site-header.html" . }}
+
+  <main id="main-content">
+    {{ block "main" . }}{{ end }}
+  </main>
+
+  {{ partial "site-footer.html" . }}
+
+  <script>
+    (function () {
+      var header = document.getElementById('site-header');
+      function update() {
+        header.classList.toggle('header-scrolled', window.scrollY > 60);
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+
+      var hamburger = document.getElementById('nav-hamburger');
+      var mobileMenu = document.getElementById('nav-mobile');
+      if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', function () {
+          hamburger.classList.toggle('open');
+          mobileMenu.classList.toggle('open');
+          document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+        mobileMenu.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            hamburger.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+          });
+        });
+      }
+    })();
+  </script>
+
+  {{ block "scripts" . }}{{ end }}
+</body>
+</html>

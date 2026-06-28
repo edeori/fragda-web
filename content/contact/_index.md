@@ -1,6 +1,6 @@
 ---
 title: "Contact"
-type: "page"
+layout: "contact"
 email: "fragda.official@gmail.com"
 subjects:
   - "Booking Inquiry"

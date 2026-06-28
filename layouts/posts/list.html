@@ -1,0 +1,41 @@
+{{ define "main" }}
+
+<div class="page-hero">
+  <p class="page-hero__eyebrow">Latest</p>
+  <h1 class="page-hero__title">News</h1>
+</div>
+<hr class="section-divider">
+
+<section class="news-section">
+  <div class="container">
+    {{ if .Pages }}
+    <div class="news-grid">
+      {{ range .Pages }}
+      <article class="news-card">
+        {{ with .Params.image }}
+        <div class="news-card__image">
+          <img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">
+        </div>
+        {{ else }}
+        <div class="news-card__no-image">
+          <i class="fa-solid fa-music"></i>
+        </div>
+        {{ end }}
+        <div class="news-card__body">
+          <p class="news-card__meta">{{ .Date.Format "January 2, 2006" }}</p>
+          <h2 class="news-card__title">{{ .Title }}</h2>
+          <p class="news-card__summary">{{ .Summary | truncate 140 }}</p>
+          <a href="{{ .RelPermalink }}" class="news-card__link">
+            Read more <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </article>
+      {{ end }}
+    </div>
+    {{ else }}
+    <p style="text-align:center; color: var(--text-muted); padding: 4rem 0;">No news yet.</p>
+    {{ end }}
+  </div>
+</section>
+
+{{ end }}

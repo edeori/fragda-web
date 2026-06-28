@@ -1,73 +1,137 @@
-<link rel="stylesheet" href="css/checkout.css">
-<link rel="stylesheet" href="css/form.css">
-<link rel="stylesheet" href="css/custom.css">
-<link rel="stylesheet" href="css/cart-item.css">
-<script src="js/checkout-form.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — Fragda</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/theme.css">
+  <script src="/js/checkout-form.js" defer></script>
+</head>
+<body>
 
-<div id="loading-indicator" class="loading-overlay hidden">
-    <div class="loading-spinner">Sending order...</div>
-</div>
+  <!-- Header -->
+  <header id="site-header" style="position:fixed;top:0;left:0;right:0;z-index:1000;height:72px;display:flex;align-items:center;padding:0 2rem;background:rgba(10,10,10,0.97);box-shadow:0 1px 0 rgba(255,255,255,0.08);backdrop-filter:blur(16px);">
+    <a href="/" style="display:flex;align-items:center;text-decoration:none;">
+      <img src="/images/fragda-logo.png" alt="Fragda" style="height:32px;width:auto;">
+    </a>
+    <a href="/shop/" style="margin-left:auto;color:var(--text-muted);font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;display:flex;align-items:center;gap:0.4rem;transition:color 200ms ease;">
+      <i class="fa-solid fa-arrow-left"></i> Back to Shop
+    </a>
+  </header>
 
-
-<div class="checkout-layout">
-    <div class="cart-section">
-        <h2>Your Cart</h2>
-        <ul id="cart-summary"></ul>
-        <div id="cart-total" class="cart-total"></div>
+  <div id="loading-indicator" class="loading-overlay hidden">
+    <div class="loading-spinner">
+      <i class="fa-solid fa-spinner fa-spin" style="margin-right:0.75rem;"></i>
+      Sending order...
     </div>
+  </div>
 
-    <form id="order-form" class="styled-form">
-        <!-- Name -->
-        <label for="name">Full Name <span>*</span></label>
-        <input type="text" id="name" name="name" required>
+  <div class="checkout-page">
+    <div class="checkout-container">
+      <h1 class="checkout-title">Checkout</h1>
 
-        <!-- Email -->
-        <label for="email">Email Address <span>*</span></label>
-        <input type="email" id="email" name="email" required>
+      <div class="checkout-layout">
 
-        <!-- Phone -->
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" pattern="^[+0-9\s\-]{7,20}$" placeholder="+36 30 123 4567">
+        <!-- Cart Summary -->
+        <div>
+          <p class="checkout-section-title">Order Summary</p>
+          <div class="cart-section">
+            <ul id="cart-summary" style="list-style:none;padding:0;"></ul>
+            <div id="cart-total" style="font-size:1rem;font-weight:700;color:var(--gold);padding-top:1rem;border-top:1px solid var(--border);margin-top:0.5rem;"></div>
+          </div>
+        </div>
 
-        <!-- Shipping Method -->
-        <label for="shipping-method">Shipping Method <span>*</span></label>
-        <select id="shipping-method" name="shippingMethod" required>
-            <option value="pickup">Personal Pickup</option>
-            <option value="post">Postal Delivery</option>
-            <option value="courier">Courier Service</option>
-            <option value="other">Parcel Locker / Foxpost / Other</option>
-        </select>
+        <!-- Order Form -->
+        <div>
+          <p class="checkout-section-title">Your Details</p>
+          <form id="order-form" class="styled-form">
 
-        <!-- Address Fields (Shown conditionally) -->
-        <fieldset id="shipping-address" style="display: none;">
-            <legend>Shipping Address</legend>
+            <div>
+              <label for="name">Full Name <span style="color:var(--gold)">*</span></label>
+              <input type="text" id="name" name="name" placeholder="Your full name" required>
+            </div>
 
-            <label for="country">Country <span>*</span></label>
-            <input type="text" id="country" name="country">
+            <div>
+              <label for="email">Email Address <span style="color:var(--gold)">*</span></label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
 
-            <label for="zip">ZIP / Postal Code <span>*</span></label>
-            <input type="text" id="zip" name="zip" pattern="^[0-9]{4,6}$">
+            <div>
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" pattern="^[+0-9\s\-]{7,20}$" placeholder="+36 30 123 4567">
+            </div>
 
-            <label for="city">City <span>*</span></label>
-            <input type="text" id="city" name="city">
+            <div>
+              <label for="shipping-method">Shipping Method <span style="color:var(--gold)">*</span></label>
+              <select id="shipping-method" name="shippingMethod" required style="background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath fill='%23888' d='M0.5 0.5L6 6L11.5 0.5'/%3E%3C/svg%3E\");background-repeat:no-repeat;background-position:right 1rem center;appearance:none;">
+                <option value="pickup">Personal Pickup</option>
+                <option value="post">Postal Delivery</option>
+                <option value="courier">Courier Service</option>
+                <option value="other">Parcel Locker / Foxpost / Other</option>
+              </select>
+            </div>
 
-            <label for="street">Street Address <span>*</span></label>
-            <input type="text" id="street" name="street" placeholder="Street name, house number, floor, door">
-        </fieldset>
+            <fieldset id="shipping-address" style="display:none;">
+              <legend>Shipping Address</legend>
 
-        <!-- Payment Method -->
-        <label for="payment-method">Payment Method <span>*</span></label>
-        <select id="payment-method" name="paymentMethod" required>
-            <option value="paypal">PayPal</option>
-            <option value="bank-transfer">Bank Transfer</option>
-            <option value="cod">Cash on Delivery</option>
-        </select>
+              <div>
+                <label for="country">Country <span style="color:var(--gold)">*</span></label>
+                <input type="text" id="country" name="country">
+              </div>
 
-        <!-- Order Notes -->
-        <label for="order-notes">Message / Notes</label>
-        <textarea id="order-notes" name="orderNotes" placeholder="Any special instructions..." rows="4"></textarea>
+              <div>
+                <label for="zip">ZIP / Postal Code <span style="color:var(--gold)">*</span></label>
+                <input type="text" id="zip" name="zip" pattern="^[0-9]{4,6}$">
+              </div>
 
-        <button type="submit">Place Order</button>
-    </form>
+              <div>
+                <label for="city">City <span style="color:var(--gold)">*</span></label>
+                <input type="text" id="city" name="city">
+              </div>
 
-</div>
+              <div>
+                <label for="street">Street Address <span style="color:var(--gold)">*</span></label>
+                <input type="text" id="street" name="street" placeholder="Street, house number, floor, door">
+              </div>
+            </fieldset>
+
+            <div>
+              <label for="payment-method">Payment Method <span style="color:var(--gold)">*</span></label>
+              <select id="payment-method" name="paymentMethod" required style="background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath fill='%23888' d='M0.5 0.5L6 6L11.5 0.5'/%3E%3C/svg%3E\");background-repeat:no-repeat;background-position:right 1rem center;appearance:none;">
+                <option value="bank-transfer">Bank Transfer</option>
+                <option value="paypal">PayPal</option>
+                <option value="cod">Cash on Delivery</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="order-notes">Message / Notes</label>
+              <textarea id="order-notes" name="orderNotes" placeholder="Any special instructions..." rows="3"></textarea>
+            </div>
+
+            <button type="submit">
+              <i class="fa-solid fa-check" style="margin-right:0.4rem;"></i>
+              Place Order
+            </button>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <style>
+    @media (max-width: 640px) {
+      .checkout-layout { grid-template-columns: 1fr !important; }
+      .checkout-page { padding-top: 5rem; }
+    }
+  </style>
+
+</body>
+</html>

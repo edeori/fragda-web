@@ -1,6 +1,41 @@
-<footer class="{{ .Site.Params.background_color_class | default " bg-black" }} bottom-0 w-100 pa3 tc"
-  role="contentinfo">
-  <p class="f4 fw4 white-70">
-    &copy; {{ with .Site.Copyright | default .Site.Title }} {{ . | safeHTML }} {{ now.Format "2006"}} {{ end }}
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-socials">
+    {{ with .Site.Params.social.spotify }}
+    <a href="{{ . }}" class="social-spotify" target="_blank" rel="noopener" aria-label="Spotify">
+      <i class="fab fa-spotify"></i>
+    </a>
+    {{ end }}
+    {{ with .Site.Params.social.bandcamp }}
+    <a href="{{ . }}" class="social-bandcamp" target="_blank" rel="noopener" aria-label="Bandcamp">
+      <i class="fab fa-bandcamp"></i>
+    </a>
+    {{ end }}
+    {{ with .Site.Params.social.youtube }}
+    <a href="{{ . }}" class="social-youtube" target="_blank" rel="noopener" aria-label="YouTube">
+      <i class="fab fa-youtube"></i>
+    </a>
+    {{ end }}
+    {{ with .Site.Params.social.facebook }}
+    <a href="{{ . }}" class="social-facebook" target="_blank" rel="noopener" aria-label="Facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    {{ end }}
+    {{ with .Site.Params.social.instagram }}
+    <a href="{{ . }}" class="social-instagram" target="_blank" rel="noopener" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    {{ end }}
+    {{ with .Site.Params.social.tiktok }}
+    <a href="{{ . }}" class="social-tiktok" target="_blank" rel="noopener" aria-label="TikTok">
+      <i class="fab fa-tiktok"></i>
+    </a>
+    {{ end }}
+  </div>
+
+  <div class="footer-divider"></div>
+
+  <p class="footer-copy">
+    &copy; {{ now.Format "2006" }} {{ .Site.Title }}<br>
+    <span>Budapest, Hungary &mdash; Extreme Metal</span>
   </p>
 </footer>

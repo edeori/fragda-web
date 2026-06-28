@@ -1,18 +1,69 @@
 {{ define "main" }}
-<div class="news-container">
-    <h1 class="news-title">Latest News</h1>
-    {{ range (where .Site.RegularPages "Section" "posts") }}
-    <article class="news-post">
-        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-        <p class="news-meta">{{ .Date.Format "January 2, 2006" }}</p>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-bg" id="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <img src="{{ "/images/fragda-logo-gold.png" | relURL }}" alt="{{ .Site.Title }}" class="hero-logo">
+    <p class="hero-tagline">{{ .Site.Params.tagline | default "Budapest, Hungary — Extreme Metal" }}</p>
+  </div>
+  <a class="hero-scroll" href="#news" aria-label="Scroll to news">
+    <i class="fa-solid fa-chevron-down"></i>
+  </a>
+</section>
+
+<!-- Latest News -->
+<section class="news-section" id="news">
+  <div class="container">
+    <div class="news-section__header">
+      <p class="news-section__eyebrow">Latest</p>
+      <h2 class="news-section__title">News</h2>
+    </div>
+
+    {{ $posts := where .Site.RegularPages "Section" "posts" }}
+    {{ if $posts }}
+    <div class="news-grid">
+      {{ range $posts }}
+      <article class="news-card">
         {{ with .Params.image }}
-        <img src="{{ . }}" alt="{{ $.Title }}" class="news-image">
-        {{ end }}
-        <div class="news-content">
-            {{ .Summary }}
+        <div class="news-card__image">
+          <img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">
         </div>
-        <a href="{{ .RelPermalink }}" class="read-more">Read more...</a>
-    </article>
+        {{ else }}
+        <div class="news-card__no-image">
+          <i class="fa-solid fa-music"></i>
+        </div>
+        {{ end }}
+        <div class="news-card__body">
+          <p class="news-card__meta">{{ .Date.Format "January 2, 2006" }}</p>
+          <h3 class="news-card__title">{{ .Title }}</h3>
+          <p class="news-card__summary">{{ .Summary | truncate 140 }}</p>
+          <a href="{{ .RelPermalink }}" class="news-card__link">
+            Read more <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </article>
+      {{ end }}
+    </div>
+    {{ else }}
+    <p style="text-align:center; color: var(--text-muted);">No news yet — check back soon.</p>
     {{ end }}
-</div>
+  </div>
+</section>
+
+{{ end }}
+
+{{ define "scripts" }}
+<script>
+  (function () {
+    var bg = document.getElementById('hero-bg');
+    if (!bg) return;
+    function parallax() {
+      var y = window.scrollY;
+      bg.style.transform = 'scale(1.04) translateY(' + (y * 0.3) + 'px)';
+    }
+    window.addEventListener('scroll', parallax, { passive: true });
+  })();
+</script>
 {{ end }}
