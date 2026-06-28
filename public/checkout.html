@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="paypal-client-id" content="AUi30qjt_xSDiLEdEuTivQSB0kQIHoDoFHcoxH9p_9eGSkNg4qj1P67YQR8gqMGA3LY7g0McBqf-K2Vq">
   <title>Checkout — Fragda</title>
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -114,10 +115,12 @@
               <textarea id="order-notes" name="orderNotes" placeholder="Any special instructions..." rows="3"></textarea>
             </div>
 
-            <button type="submit">
+            <button type="submit" id="submit-btn">
               <i class="fa-solid fa-check" style="margin-right:0.4rem;"></i>
               Place Order
             </button>
+
+            <div id="paypal-button-container" style="display:none; margin-top:1rem;"></div>
 
           </form>
         </div>

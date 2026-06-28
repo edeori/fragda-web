@@ -30,6 +30,41 @@ exports.handler = async function (event) {
 
     const shipping = order.shippingAddress || {};
 
+    // Bank transfer block (only included when payment method is bank-transfer)
+    const bankIban = process.env.BANK_IBAN || "";
+    const bankName = process.env.BANK_NAME || "";
+    const bankHolder = process.env.BANK_HOLDER || "";
+    const isBankTransfer = order.paymentMethod === "bank-transfer";
+
+    const bankTransferHTML = isBankTransfer
+      ? `
+    <div style="margin:1.5rem 0; padding:1rem 1.25rem; background:#f5f5f5; border-left:4px solid #c48d23; border-radius:4px;">
+      <h3 style="margin:0 0 0.5rem; color:#333;">Bank Transfer Details</h3>
+      <p style="margin:0; line-height:1.8;">
+        <strong>Account holder:</strong> ${bankHolder}<br>
+        <strong>Bank:</strong> ${bankName}<br>
+        <strong>IBAN:</strong> <code style="font-size:1rem;">${bankIban}</code><br>
+        <strong>Reference:</strong> Order #${orderId}
+      </p>
+      <p style="margin:0.75rem 0 0; font-size:0.85rem; color:#666;">
+        Please include your Order ID as the payment reference. Your order will be processed once the transfer is confirmed.
+      </p>
+    </div>`
+      : "";
+
+    const bankTransferText = isBankTransfer
+      ? `
+--- Bank Transfer Details ---
+Account holder: ${bankHolder}
+Bank: ${bankName}
+IBAN: ${bankIban}
+Reference: Order #${orderId}
+
+Please include your Order ID as the payment reference.
+----------------------------
+`
+      : "";
+
     const shippingInfoHTML =
       order.shippingMethod === "post" ||
       order.shippingMethod === "courier" ||
@@ -117,7 +152,12 @@ ${shipping.country || ""}
   <p><strong>Shipping Method:</strong> ${order.shippingMethod}</p>
   ${shippingInfoHTML}
 
-  <p><strong>Payment Method:</strong> ${order.paymentMethod}</p>
+  <p><strong>Payment Method:</strong> ${order.paymentMethod}${
+      order.paypalTransactionId
+        ? ` &mdash; <span style="color:#0070ba;">Transaction ID: ${order.paypalTransactionId}</span>${order.paypalPayerEmail ? ` (${order.paypalPayerEmail})` : ""}`
+        : ""
+    }</p>
+  ${bankTransferHTML}
   ${notesSection}
 
   <p>We will process your order shortly.</p>
@@ -152,7 +192,7 @@ Shipping Method: ${order.shippingMethod}
 ${shippingInfoText}
 
 Payment Method: ${order.paymentMethod}
-${notesText}
+${bankTransferText}${notesText}
 
 We will process your order shortly.
 
