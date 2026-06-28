@@ -3,10 +3,11 @@
   publish = "public"
 
 [context.production.environment]
-  HUGO_VERSION = "0.143.1"
+  HUGO_VERSION = "0.163.3"
   HUGO_ENV = "production"
   HUGO_ENABLEGITINFO = "true"
   HUGO_BUILD_DRAFTS = "true"
+  SECRETS_SCAN_OMIT_KEYS = "BANK_HOLDER,BANK_NAME,BANK_IBAN,SHEETS_WEBHOOK_URL"
 
 [build.processing]
   skip_processing = false
