@@ -1557,3 +1557,205 @@ body:not(.is-home) #site-header {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ============================================================
+   Checkout Page
+   ============================================================ */
+
+.checkout-page {
+  min-height: 100vh;
+  padding: 6rem 1.5rem 4rem;
+  background: var(--bg);
+}
+
+.checkout-container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.checkout-title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 2.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.checkout-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.checkout-section-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+}
+
+/* Order summary */
+.cart-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+}
+
+.cart-total-line {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--gold);
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  margin-top: 0.5rem;
+}
+
+/* Loading overlay */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-overlay.hidden {
+  display: none;
+}
+
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 2rem;
+}
+
+/* Styled form */
+.styled-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.styled-form > div,
+.styled-form > fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.styled-form label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.styled-form input,
+.styled-form select,
+.styled-form textarea {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 0.95rem;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  transition: border-color var(--transition);
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.styled-form select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath fill='%23888' d='M0.5 0.5L6 6L11.5 0.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+.styled-form input:focus,
+.styled-form select:focus,
+.styled-form textarea:focus {
+  border-color: var(--gold);
+}
+
+.styled-form input::placeholder,
+.styled-form textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+.styled-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.styled-form fieldset {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.styled-form fieldset legend {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 0 0.5rem;
+}
+
+.styled-form button[type="submit"] {
+  background: var(--gold);
+  color: #000;
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.styled-form button[type="submit"]:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 700px) {
+  .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+  .checkout-page {
+    padding-top: 5rem;
+  }
+}

@@ -69,7 +69,7 @@
 
             <div>
               <label for="shipping-method">Shipping Method <span style="color:var(--gold)">*</span></label>
-              <select id="shipping-method" name="shippingMethod" required style="background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath fill='%23888' d='M0.5 0.5L6 6L11.5 0.5'/%3E%3C/svg%3E\");background-repeat:no-repeat;background-position:right 1rem center;appearance:none;">
+              <select id="shipping-method" name="shippingMethod" required>
                 <option value="pickup">Personal Pickup</option>
                 <option value="post">Postal Delivery</option>
                 <option value="courier">Courier Service</option>
@@ -103,7 +103,7 @@
 
             <div>
               <label for="payment-method">Payment Method <span style="color:var(--gold)">*</span></label>
-              <select id="payment-method" name="paymentMethod" required style="background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath fill='%23888' d='M0.5 0.5L6 6L11.5 0.5'/%3E%3C/svg%3E\");background-repeat:no-repeat;background-position:right 1rem center;appearance:none;">
+              <select id="payment-method" name="paymentMethod" required>
                 <option value="bank-transfer">Bank Transfer</option>
                 <option value="paypal">PayPal</option>
                 <option value="cod">Cash on Delivery</option>
@@ -116,7 +116,7 @@
             </div>
 
             <button type="submit" id="submit-btn">
-              <i class="fa-solid fa-check" style="margin-right:0.4rem;"></i>
+              <i class="fa-solid fa-check"></i>
               Place Order
             </button>
 
@@ -128,13 +128,6 @@
       </div>
     </div>
   </div>
-
-  <style>
-    @media (max-width: 640px) {
-      .checkout-layout { grid-template-columns: 1fr !important; }
-      .checkout-page { padding-top: 5rem; }
-    }
-  </style>
 
 </body>
 </html>
