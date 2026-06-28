@@ -150,17 +150,6 @@ collections:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Body", name: "body", widget: "markdown" }
 
-  - name: "bio"
-    label: "Bio Page"
-    delete: false # Prevent deletion
-    files:
-      - label: "Bio"
-        name: "bio"
-        file: "content/bio.md"
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Body", name: "body", widget: "markdown" }
-
   - name: "epk"
     label: "EPK"
     delete: false
