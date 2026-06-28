@@ -270,15 +270,18 @@ async function saveToAirtable(order, orderId, shipping) {
     paypalTransactionId: order.paypalTransactionId || "",
   };
 
+  // Google Apps Script returns 302 redirect after executing the script.
+  // We use redirect:'manual' so fetch doesn't follow it — the 302 itself
+  // confirms the script ran successfully.
   const response = await fetch(webhookUrl, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
+    redirect: "manual",
   });
 
-  if (!response.ok) {
-    const err = await response.text();
-    throw new Error(err);
+  if (response.status !== 302 && response.status !== 200) {
+    throw new Error(`Unexpected status: ${response.status}`);
   }
 
   console.log("✅ Order saved to Google Sheets");
