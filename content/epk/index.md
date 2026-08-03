@@ -18,7 +18,8 @@ images:
 {{< bandcamp_pair
     left_type="album"  left_id="1461615403"  tracklist_left="true"
     right_type="album" right_id="1534769724" tracklist_right="true"
->}}
+
+> }}
 
 {{< gallery caption="Press photos (2025)" >}}
 *Photos by Vida Dani — contact: [VidaniPhoto](https://www.facebook.com/vidaniphoto)*
@@ -33,7 +34,7 @@ Fragda’s writing leans on fractured, syncopated rhythms, tremolo-picked disson
 
 Lyrically and visually, the band draws on Eastern European witchcraft, folk horror, and occult symbolism, reframing regional myth into a modern, ritualistic narrative. On stage they favor momentum over ornament—tight cues, stark dynamics, and a set that moves like a single arc. For listeners of Lorna Shore, Anaal Nathrakh, Der Weg einer Freiheit, Vildhjarta, or Humanity’s Last Breath, Fragda offers a distinctly Central-European take: colder, earthier, and resolutely cinematic.
 
-{{< yt_grid ids="w8uxoYL8ylI, DkD3_JIxFHI, vHRuysoKguM, wKjc9NtGisM" >}}
+{{< yt_grid ids="wKjc9NtGisM, w8uxoYL8ylI, DkD3_JIxFHI, vHRuysoKguM" >}}
 
 ## Line-up
 
