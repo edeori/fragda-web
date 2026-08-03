@@ -18,8 +18,7 @@ images:
 {{< bandcamp_pair
     left_type="album"  left_id="1461615403"  tracklist_left="true"
     right_type="album" right_id="1534769724" tracklist_right="true"
-
-> }}
+>}}
 
 {{< gallery caption="Press photos (2025)" >}}
 *Photos by Vida Dani — contact: [VidaniPhoto](https://www.facebook.com/vidaniphoto)*

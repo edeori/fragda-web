@@ -26,9 +26,14 @@
     <div class="news-grid">
       {{ range $posts }}
       <article class="news-card">
-        {{ with .Params.image }}
+        {{ if .Params.image }}
         <div class="news-card__image">
-          <img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">
+          <img src="{{ .Params.image }}" alt="{{ .Title }}" loading="lazy">
+        </div>
+        {{ else if .Params.youtube }}
+        {{ $ytid := .Params.youtube | replaceRE `.*(?:youtu\.be/|v=|embed/)([^?&"'>]+).*` "$1" }}
+        <div class="news-card__image">
+          <img src="https://i.ytimg.com/vi/{{ $ytid }}/hqdefault.jpg" alt="{{ .Title }}" loading="lazy">
         </div>
         {{ else }}
         <div class="news-card__no-image">
