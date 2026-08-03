@@ -1,4 +1,5 @@
 # Hugo-generated files
+/public
 /resources
 hugo_stats.json
 

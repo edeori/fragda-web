@@ -1,0 +1,78 @@
+{{- $site := .Site -}}
+{{- $isHome := .IsHome -}}
+
+{{- /* Title */ -}}
+{{- $title := "" -}}
+{{- if $isHome -}}
+  {{- $title = $site.Title -}}
+{{- else -}}
+  {{- $title = printf "%s | %s" .Title $site.Title -}}
+{{- end -}}
+
+{{- /* Description: page description > page summary > site default */ -}}
+{{- $desc := "" -}}
+{{- if .Description -}}
+  {{- $desc = .Description -}}
+{{- else if $isHome -}}
+  {{- $desc = $site.Params.description -}}
+{{- else if .Summary -}}
+  {{- $desc = .Summary | plainify | replaceRE `\s+` " " | truncate 160 | strings.TrimSpace -}}
+{{- else -}}
+  {{- $desc = $site.Params.description -}}
+{{- end -}}
+
+{{- /* Image: page image param > site default OG image */ -}}
+{{- $image := "" -}}
+{{- with .Params.image -}}
+  {{- $image = . -}}
+{{- else -}}
+  {{- with .Params.images -}}
+    {{- $image = index . 0 -}}
+  {{- else -}}
+    {{- $image = "/images/og-default.jpg" -}}
+  {{- end -}}
+{{- end -}}
+{{- $imageAbs := $image | absURL -}}
+
+{{- $ogType := "website" -}}
+{{- if eq .Type "posts" -}}{{- if not .IsSection -}}{{- $ogType = "article" -}}{{- end -}}{{- end -}}
+
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $desc }}">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="{{ .Permalink }}">
+
+<meta property="og:type" content="{{ $ogType }}">
+<meta property="og:site_name" content="{{ $site.Title }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:image" content="{{ $imageAbs }}">
+<meta property="og:locale" content="en_US">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $desc }}">
+<meta name="twitter:image" content="{{ $imageAbs }}">
+
+{{ if $isHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicGroup",
+  "name": "Fragda",
+  "genre": ["Blackened deathcore", "Blackcore", "Extreme metal"],
+  "url": "{{ $site.BaseURL }}",
+  "logo": "{{ "/images/fragda-logo-gold.png" | absURL }}",
+  "image": "{{ $imageAbs }}",
+  "foundingLocation": "Budapest, Hungary",
+  "sameAs": [
+    {{- $socials := slice -}}
+    {{- range $site.Params.social -}}
+      {{- $socials = $socials | append . -}}
+    {{- end -}}
+    {{- range $i, $url := $socials }}{{ if $i }}, {{ end }}"{{ $url }}"{{ end }}
+  ]
+}
+</script>
+{{ end }}

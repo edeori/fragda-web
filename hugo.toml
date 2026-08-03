@@ -2,6 +2,7 @@ baseURL = "https://fragda.hu/"
 languageCode = "en-us"
 title = "Fragda Official"
 theme = "ananke"
+enableRobotsTXT = true
 
 [params]
   description = "Fragda — Blackened deathcore from Budapest, Hungary"

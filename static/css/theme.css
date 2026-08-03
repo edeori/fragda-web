@@ -188,8 +188,6 @@ body:not(.is-home) #site-header {
 .header-logo img {
   height: 34px;
   width: auto;
-  filter: invert(1);
-  mix-blend-mode: screen;
 }
 
 /* Desktop Nav */
